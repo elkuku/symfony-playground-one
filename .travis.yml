@@ -22,9 +22,11 @@ before_script:
   - nvm install 12
   - yarn install
   - yarn dev
+  - bin/console doctrine:migrations:migrate -n
 
 script:
   - SYMFONY_DEPRECATIONS_HELPER=disabled ./bin/phpunit $PHPUNIT_FLAGS
+#  - make tests
 #  - cat ./var/log/test.log
 
 #after_script:
