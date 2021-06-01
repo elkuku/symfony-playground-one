@@ -154,6 +154,9 @@
       <path value="$PROJECT_DIR$/vendor/shanethehat/pretty-xml" />
       <path value="$PROJECT_DIR$/vendor/ergebnis/json-printer" />
       <path value="$PROJECT_DIR$/vendor/tracy/tracy" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/runtime" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
