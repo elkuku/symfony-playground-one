@@ -7,6 +7,7 @@ use DirectoryIterator;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Controller "smoke" test
@@ -45,10 +46,10 @@ class ControllerAdminAccessTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = static::$container->get(UserRepository::class)
+        $user = static::getContainer()->get(UserRepository::class)
             ->findOneByEmail('admin@example.com');
 
-        $routeLoader = static::$container
+        $routeLoader = static::getContainer()
             ->get('routing.loader');
 
         foreach (
@@ -65,18 +66,18 @@ class ControllerAdminAccessTest extends WebTestCase
                 continue;
             }
 
-            $client->loginUser($user);
+
             $routerClass = 'App\Controller\\'.basename(
                     $item->getBasename(),
                     '.php'
                 );
             $routes = $routeLoader->load($routerClass)->all();
 
-            $this->processRoutes($routes, $client);
+            $this->processRoutes($routes, $client, $user);
         }
     }
 
-    private function processRoutes(array $routes, KernelBrowser $browser): void
+    private function processRoutes(array $routes, KernelBrowser $browser, UserInterface $user): void
     {
         foreach ($routes as $routeName => $route) {
             $defaultId = 1;
@@ -99,7 +100,7 @@ class ControllerAdminAccessTest extends WebTestCase
 
             $methods = $route->getMethods() ?: ['GET'];
             $path = str_replace('{id}', $defaultId, $route->getPath());
-            $out = false;
+            $out = true;
             foreach ($methods as $method) {
                 $expectedStatusCode = 302;
                 if (array_key_exists($method, $expectedStatusCodes)) {
@@ -114,6 +115,7 @@ class ControllerAdminAccessTest extends WebTestCase
                     );
                 }
 
+                $browser->loginUser($user);
                 $browser->request($method, $path);
 
                 if ($out) {
