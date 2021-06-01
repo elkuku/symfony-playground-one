@@ -1,12 +1,13 @@
 Update: Update
 Save: Save
-'Are you sure you want to delete this item?': '__Are you sure you want to delete this item?'
+'Are you sure you want to delete this item?': 'Are you sure you want to delete this item?'
 Delete: Delete
-'Create new': '__Create new'
+'Create new': 'Create new'
 Edit: Edit
-'Back to list': '__Back to list'
+'Back to list': 'Back to list'
 Admin: Admin
 Users: Users
 Logout: Logout
 Login: Login
 'Made with {link}': 'Made with {link}'
+'Edit user': 'Edit user'
