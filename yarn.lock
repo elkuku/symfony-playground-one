@@ -1241,9 +1241,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@symfony/webpack-encore@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@symfony/webpack-encore@npm:1.3.0"
+"@symfony/webpack-encore@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "@symfony/webpack-encore@npm:1.4.0"
   dependencies:
     "@babel/core": ^7.7.0
     "@babel/plugin-syntax-dynamic-import": ^7.0.0
@@ -1271,7 +1271,7 @@ __metadata:
     yargs-parser: ^20.2.4
   bin:
     encore: bin/encore.js
-  checksum: c12304e11e704812f84b8c6f6b7f96097fa615ba7099ec6fdf76e635a288d40e190d3f854d272f7d4d660f235d180f2d4ae9413b25247f7de3753d5c65f2f336
+  checksum: a740f0f5e47d65032a9334923daf8dcddb8facec4039339b0ae87a6403542bbb26192c54ae77d2af5d8568a07c35dc7359f8251ed25b02a92edbec9fe8b2411a
   languageName: node
   linkType: hard
 
@@ -2525,10 +2525,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "core-js@npm:3.12.1"
-  checksum: 8b1d05579e7ddeafcd390001cc893540275fa3e658a00ae57f88954411a25bdfe583debb1929c6a50e40631cc07f2092490ea2284b35ffb922b23d7677060f28
+"core-js@npm:^3.13.1":
+  version: 3.13.1
+  resolution: "core-js@npm:3.13.1"
+  checksum: 9138463ed7e6489a0b7f7e8a13cb345fde22866ab23d35f0e0e0ddc13e0374dfc7542d7316762a7dc2a5074efe22f8ff692e26ccc22860d8179de5eedf922e98
   languageName: node
   linkType: hard
 
@@ -6304,17 +6304,17 @@ fsevents@~2.3.1:
   dependencies:
     "@popperjs/core": ^2.9.2
     "@symfony/stimulus-bridge": ^2.1.0
-    "@symfony/webpack-encore": ^1.3.0
+    "@symfony/webpack-encore": ^1.4.0
     bootstrap: ^5.0.1
     bootswatch: ^5.0.1
-    core-js: ^3.12.1
+    core-js: ^3.13.1
     file-loader: ^6.2.0
     jquery: ^3.6.0
     open-iconic: ^1.1.1
     regenerator-runtime: ^0.13.8
     stimulus: ^2.0.0
     stimulus-use: ^0.23.0
-    sweetalert2: ^11.0.11
+    sweetalert2: ^11.0.16
     webpack-notifier: ^1.13.0
   languageName: unknown
   linkType: soft
@@ -6892,10 +6892,10 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"sweetalert2@npm:^11.0.11":
-  version: 11.0.11
-  resolution: "sweetalert2@npm:11.0.11"
-  checksum: 301be8a58a8ec6eb5ace1b78f7fd5f3f51747520e73f51e621038999c6d07b16f7660118da9248dcb8dd9beb74237815fc8eecef4d5b634d9dda43129d0dd597
+"sweetalert2@npm:^11.0.16":
+  version: 11.0.16
+  resolution: "sweetalert2@npm:11.0.16"
+  checksum: b4fa3d72ca7d3a4c0812ae1497f9c30bb9912c84a7043978ed8a3eea8786df9ce392a7a1489cb9e7ae78fa2bdac1f90395d9c4bb9b27115f3dc299366104b7ca
   languageName: node
   linkType: hard
 
