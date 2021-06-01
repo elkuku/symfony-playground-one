@@ -2,7 +2,7 @@
 
 ![screen-playground-one](https://user-images.githubusercontent.com/33978/103650387-edff8280-4f2d-11eb-84c8-486662e25bd5.png)
 
-* Symfony 5.2.*
+* Symfony 5.3.*
 * Docker compose file for PostgreSQL
 * `dev` login form <br/> `prod` google login
 * JQuery, Bootstrap and [Bootswatch](https://bootswatch.com/)
