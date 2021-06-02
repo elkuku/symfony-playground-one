@@ -4,33 +4,33 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-<div
-        {{ stimulus_controller('reload-content', {
-            url: path('user_index', {ajax: 1})
-        }) }}
-        data-action="modal-form:success->reload-content#refreshContent submit-confirm:async:submitted->reload-content#refreshContent"
->
-    <div class="float-end">
-        <div {{ stimulus_controller('modal-form', {
-            formUrl: path('user_new', { ajax: 1 })
-        }) }}
-        >
-            <button
-                    class="btn btn-outline-success"
-                    data-action="modal-form#openModal"
-            ><span class="oi oi-plus"></span>
-            </button>
-            {{ include('_modal.html.twig', {
-                modalTitle: 'Neu User'
+    <div
+            {{ stimulus_controller('reload-content', {
+                url: path('user_index', {ajax: 1})
             }) }}
+            data-action="modal-form:success->reload-content#refreshContent submit-confirm:async:submitted->reload-content#refreshContent"
+    >
+        <div class="float-end">
+            <div {{ stimulus_controller('modal-form', {
+                formUrl: path('user_new', { ajax: 1 })
+            }) }}
+            >
+                <button
+                        class="btn btn-outline-success"
+                        data-action="modal-form#openModal"
+                ><span class="oi oi-plus"></span>
+                </button>
+                {{ include('_modal.html.twig', {
+                    modalTitle: 'Neu User'
+                }) }}
+            </div>
         </div>
+
+        <h1>User index</h1>
+
+        <div data-reload-content-target="content">
+            {{ include('user/_list.html.twig') }}
+        </div>
+
     </div>
-
-    <h1>User index</h1>
-
-    <div data-reload-content-target="content">
-        {{ include('user/_list.html.twig') }}
-    </div>
-
-</div>
 {% endblock %}

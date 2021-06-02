@@ -10,8 +10,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ): void {
         $builder
             ->add('email')
             ->add(
@@ -20,7 +22,7 @@ class UserType extends AbstractType
                 [
                     'choices' => User::ROLES,
                     'attr'    => [
-                        'class'      => 'selectpicker',
+                        'class' => 'selectpicker',
                         'data-style' => 'btn-success',
                     ],
                 ]

@@ -18,8 +18,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, Request $request): Response
-    {
+    public function index(
+        UserRepository $userRepository,
+        Request $request
+    ): Response {
         $template = $request->query->get('ajax')
             ? '_list.html.twig'
             : 'index.html.twig';
@@ -33,8 +35,9 @@ class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
-    {
+    public function new(
+        Request $request
+    ): Response {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -62,8 +65,9 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'user_show', methods: ['GET'])]
-    public function show(User $user): Response
-    {
+    public function show(
+        User $user
+    ): Response {
         return $this->render(
             'user/show.html.twig',
             [
@@ -73,8 +77,10 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user): Response
-    {
+    public function edit(
+        Request $request,
+        User $user
+    ): Response {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -99,8 +105,10 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'user_delete', methods: ['DELETE'])]
-    public function delete(Request $request, User $user): Response
-    {
+    public function delete(
+        Request $request,
+        User $user
+    ): Response {
         if ($this->isCsrfTokenValid(
             'delete'.$user->getId(),
             $request->request->get('_token')
