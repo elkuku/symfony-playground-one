@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,20 +17,18 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use UnexpectedValueException;
 
+#[AsCommand(
+    name: 'user-admin',
+    description: 'Administer user accounts',
+    aliases: ['useradmin']
+)]
 class UserAdminCommand extends Command
 {
-    protected static $defaultName = 'user-admin';// Type must be defined in base class :(
-
     public function __construct(
         private EntityManagerInterface $entityManager,
         private ValidatorInterface $validator
     ) {
         parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this->setDescription('Administer Users');
     }
 
     protected function execute(
@@ -42,7 +41,7 @@ class UserAdminCommand extends Command
 
         $this->showMenu($input, $output);
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     private function showMenu(
@@ -84,10 +83,10 @@ class UserAdminCommand extends Command
                     $this->showMenu($input, $output);
                     break;
                 case 'Create User':
-                    $email = $this->askEmail($input, $output);
+                    $identifier = $this->askIdentifier($input, $output);
                     $role = $this->askRole($input, $output);
 
-                    $this->createUser($email, $role);
+                    $this->createUser($identifier, $role);
                     $io->success('User created');
                     $this->showMenu($input, $output);
                     break;
@@ -124,15 +123,14 @@ class UserAdminCommand extends Command
         array $users
     ): void {
         $table = new Table($output);
-        $table->setHeaders(['ID', 'Username', 'email', 'Role']);
+        $table->setHeaders(['ID', 'Identifier', 'Role']);
 
         /* @type User $user */
         foreach ($users as $user) {
             $table->addRow(
                 [
                     $user->getId(),
-                    $user->getUsername(),
-                    $user->getEmail(),
+                    $user->getUserIdentifier(),
                     implode(", ", $user->getRoles()),
                 ]
             );
@@ -140,38 +138,37 @@ class UserAdminCommand extends Command
         $table->render();
     }
 
-    private function askEmail(
+    private function askIdentifier(
         InputInterface $input,
         OutputInterface $output
     ): string {
-        $email = null;
         $io = new SymfonyStyle($input, $output);
         do {
-            $email = $this->getHelper('question')->ask(
+            $identifier = $this->getHelper('question')->ask(
                 $input,
                 $output,
-                new Question('Email: ')
+                new Question('Identifier: ')
             );
-            if (!$email) {
-                $io->warning('e-mail is required :(');
+            if (!$identifier) {
+                $io->warning('Identifier required :(');
             } else {
                 $emailConstraint = new Email();
                 $emailConstraint->message = 'Invalid email address';
 
                 $errors = $this->validator->validate(
-                    $email,
+                    $identifier,
                     $emailConstraint
                 );
 
                 if (count($errors)) {
                     $io->warning($errors[0]->getMessage());
 
-                    $email = null;
+                    $identifier = null;
                 }
             }
-        } while ($email === null);
+        } while ($identifier === null);
 
-        return $email;
+        return $identifier;
     }
 
     private function askRole(InputInterface $input, OutputInterface $output)
@@ -191,10 +188,10 @@ class UserAdminCommand extends Command
         );
     }
 
-    private function createUser(string $email, string $role): void
+    private function createUser(string $identifier, string $role): void
     {
         $user = (new User())
-            ->setEmail($email)
+            ->setUserIdentifier($identifier)
             ->setRole($role);
 
         $this->entityManager->persist($user);
