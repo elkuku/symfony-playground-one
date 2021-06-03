@@ -78,6 +78,13 @@ class User implements UserInterface, Serializable
         return $this->email;
     }
 
+    public function setUserIdentifier(string $identifier): self
+    {
+        $this->email = $identifier;
+
+        return $this;
+    }
+
     public function getUsername(): string
     {
         return $this->email;
