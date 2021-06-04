@@ -20,7 +20,7 @@ use UnexpectedValueException;
 #[AsCommand(
     name: 'user-admin',
     description: 'Administer user accounts',
-    aliases: ['useradmin']
+    aliases: ['useradmin', 'admin']
 )]
 class UserAdminCommand extends Command
 {
