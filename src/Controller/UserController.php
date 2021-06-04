@@ -54,13 +54,12 @@ class UserController extends AbstractController
             ? '_form.html.twig'
             : 'new.html.twig';
 
-        return $this->render(
+        return $this->renderForm(
             'user/'.$template,
             [
                 'user' => $user,
-                'form' => $form->createView(),
-            ],
-            new Response(null, $form->isSubmitted() ? 422 : 200)
+                'form' => $form,
+            ]
         );
     }
 
@@ -94,13 +93,12 @@ class UserController extends AbstractController
             ? '_form.html.twig'
             : 'edit.html.twig';
 
-        return $this->render(
+        return $this->renderForm(
             'user/'.$template,
             [
                 'user' => $user,
-                'form' => $form->createView(),
-            ],
-            new Response(null, $form->isSubmitted() ? 422 : 200)
+                'form' => $form,
+            ]
         );
     }
 
