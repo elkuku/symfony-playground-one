@@ -15,7 +15,7 @@ class UserControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h2', 'Hello DefaultController!');
 
-        $userRepository = static::$container->get(UserRepository::class);
+        $userRepository = static::getContainer()->get(UserRepository::class);
 
         $testUser = $userRepository->findOneByEmail('user@example.com');
         $client->loginUser($testUser);

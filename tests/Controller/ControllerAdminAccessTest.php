@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Controller "smoke" test
+ * Admin Controller "smoke" test
  */
 class ControllerAdminAccessTest extends WebTestCase
 {
@@ -44,7 +44,6 @@ class ControllerAdminAccessTest extends WebTestCase
      */
     public function testRoutes(): void
     {
-        self::markTestSkipped('authentication doesnt work anymore :(');
         $client = static::createClient();
 
         $user = static::getContainer()->get(UserRepository::class)
@@ -101,7 +100,7 @@ class ControllerAdminAccessTest extends WebTestCase
 
             $methods = $route->getMethods() ?: ['GET'];
             $path = str_replace('{id}', $defaultId, $route->getPath());
-            $out = true;
+            $out = false;
             foreach ($methods as $method) {
                 $expectedStatusCode = 302;
                 if (array_key_exists($method, $expectedStatusCodes)) {
