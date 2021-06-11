@@ -5,9 +5,9 @@ namespace App\Security;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use League\OAuth2\Client\Provider\GoogleUser;
+use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
+use League\OAuth2\Client\Provider\GithubResourceOwner;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -19,7 +19,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class GoogleAuthenticator extends AbstractAuthenticator
+class GitHubAuthenticator extends AbstractAuthenticator
 {
     use TargetPathTrait;
 
@@ -33,7 +33,7 @@ class GoogleAuthenticator extends AbstractAuthenticator
 
     public function supports(Request $request): bool
     {
-        return $request->attributes->get('_route') === 'connect_google_check';
+        return $request->attributes->get('_route') === 'connect_github_check';
     }
 
     /**
@@ -41,13 +41,13 @@ class GoogleAuthenticator extends AbstractAuthenticator
      */
     public function authenticate(Request $request): PassportInterface
     {
-        $token = $this->getGoogleClient()->getAccessToken();
+        $token = $this->getClient()->getAccessToken();
 
-        /** @var GoogleUser $googleUser */
-        $googleUser = $this->getGoogleClient()
+        /** @var GithubResourceOwner $githubResourceOwner */
+        $githubResourceOwner = $this->getClient()
             ->fetchUserFromToken($token);
 
-        $user = $this->getUser($googleUser);
+        $user = $this->getUser($githubResourceOwner);
 
         return new SelfValidatingPassport(
             new UserBadge($user->getUserIdentifier()),
@@ -83,11 +83,11 @@ class GoogleAuthenticator extends AbstractAuthenticator
         return new RedirectResponse($this->urlGenerator->generate('login'));
     }
 
-    private function getUser(GoogleUser $googleUser): User
+    private function getUser(GithubResourceOwner $resourceOwner): User
     {
-        // 1) have they logged in with Google before? Easy!
+        // 1) have they logged in with GitHub before? Easy!
         if ($user = $this->userRepository->findOneBy(
-            ['googleId' => $googleUser->getId()]
+            ['gitHubId' => $resourceOwner->getId()]
         )
         ) {
             return $user;
@@ -95,16 +95,16 @@ class GoogleAuthenticator extends AbstractAuthenticator
 
         // @todo remove: Fetch user by email
         if ($user = $this->userRepository->findOneBy(
-            ['identifier' => $googleUser->getEmail()]
+            ['identifier' => $resourceOwner->getNickname()]
         )
         ) {
-            // @todo remove: Update existing users google id
-            $user->setGoogleId($googleUser->getId());
+            // @todo remove: Update existing users GitHub id
+            $user->setGitHubId($resourceOwner->getId());
         } else {
             // Register new user
             $user = (new User())
-                ->setUserIdentifier($googleUser->getEmail())
-                ->setGoogleId($googleUser->getId());
+                ->setUserIdentifier($resourceOwner->getNickname())
+                ->setGitHubId($resourceOwner->getId());
         }
 
         $this->entityManager->persist($user);
@@ -113,8 +113,8 @@ class GoogleAuthenticator extends AbstractAuthenticator
         return $user;
     }
 
-    private function getGoogleClient(): OAuth2ClientInterface
+    private function getClient(): OAuth2ClientInterface
     {
-        return $this->clientRegistry->getClient('google');
+        return $this->clientRegistry->getClient('github');
     }
 }

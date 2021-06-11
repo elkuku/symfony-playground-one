@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="system_user")
- * @UniqueEntity(fields="email", message="This email address is already in use")
+ * @UniqueEntity(fields="identifier", message="This identifier is already in use")
  */
 class User implements UserInterface, Serializable
 {
@@ -31,11 +31,8 @@ class User implements UserInterface, Serializable
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email."
-     * )
      */
-    private string $email = '';
+    private string $identifier = '';
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -46,6 +43,11 @@ class User implements UserInterface, Serializable
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private ?string $googleId = '';
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $gitHubId = '';
 
     public function eraseCredentials(): void
     {
@@ -75,31 +77,19 @@ class User implements UserInterface, Serializable
 
     public function getUserIdentifier(): string
     {
-        return $this->email;
+        return $this->identifier;
     }
 
     public function setUserIdentifier(string $identifier): self
     {
-        $this->email = $identifier;
+        $this->identifier = $identifier;
 
         return $this;
     }
 
     public function getUsername(): string
     {
-        return $this->email;
-    }
-
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
+        return $this->identifier;
     }
 
     public function getPassword(): ?string
@@ -116,7 +106,7 @@ class User implements UserInterface, Serializable
         return serialize(
             [
                 $this->id,
-                $this->email,
+                $this->identifier,
             ]
         );
     }
@@ -125,9 +115,9 @@ class User implements UserInterface, Serializable
     {
         [
             $this->id,
-            $this->email,
+            $this->identifier,
         ]
-            = unserialize($serialized);
+            = unserialize($serialized, ['allowed_classes'=>[__CLASS__]]);
     }
 
     public function getGoogleId(): ?string
@@ -138,6 +128,18 @@ class User implements UserInterface, Serializable
     public function setGoogleId(?string $googleId): self
     {
         $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    public function getGitHubId(): ?string
+    {
+        return $this->gitHubId;
+    }
+
+    public function setGitHubId(?string $gitHubId): self
+    {
+        $this->gitHubId = $gitHubId;
 
         return $this;
     }

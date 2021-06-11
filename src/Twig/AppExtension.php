@@ -3,6 +3,7 @@
 namespace App\Twig;
 
 use App\Entity\User;
+use JetBrains\PhpStorm\Pure;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -15,8 +16,10 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function getRoleName($value)
-    {
+    #[Pure]
+    public function getRoleName(
+        $value
+    ): string {
         return array_search($value, User::ROLES, true);
     }
 }

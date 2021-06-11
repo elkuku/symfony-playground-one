@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th>Id</th>
-        <th>Email</th>
+        <th>Identifier</th>
         <th>Role</th>
         <th>actions</th>
     </tr>
@@ -11,7 +11,7 @@
     {% for user in users %}
         <tr>
             <td>{{ user.id }}</td>
-            <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.email }}</a></td>
+            <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.userIdentifier }}</a></td>
             <td>{{ user.role|role_name }}</td>
             <td>
                 <div class="btn-group">

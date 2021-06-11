@@ -5,11 +5,12 @@ namespace App\Tests\Controller;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class UserControllerTest extends WebTestCase
+class UserAccessTest extends WebTestCase
 {
-    public function testSomething(): void
+    public function testUserLogin(): void
     {
         $client = static::createClient();
+
         $client->request('GET', '/');
 
         self::assertResponseIsSuccessful();
@@ -17,8 +18,9 @@ class UserControllerTest extends WebTestCase
 
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $testUser = $userRepository->findOneByEmail('user@example.com');
-        $client->loginUser($testUser);
+        $user = $userRepository->findOneByIdentifier('user@example.com');
+
+        $client->loginUser($user);
 
         $client->request('GET', '/');
 

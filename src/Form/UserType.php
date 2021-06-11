@@ -15,7 +15,7 @@ class UserType extends AbstractType
         array $options
     ): void {
         $builder
-            ->add('email')
+            ->add('userIdentifier')
             ->add(
                 'role',
                 ChoiceType::class,
