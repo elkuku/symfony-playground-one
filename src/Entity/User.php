@@ -53,6 +53,11 @@ class User implements UserInterface, Serializable
     {
     }
 
+    public function getRoles(): array
+    {
+        return [$this->getRole()];
+    }
+
     public function getRole(): string
     {
         return $this->role;
@@ -63,11 +68,6 @@ class User implements UserInterface, Serializable
         $this->role = $role;
 
         return $this;
-    }
-
-    public function getRoles(): array
-    {
-        return [$this->getRole()];
     }
 
     public function getId(): ?int
@@ -117,7 +117,7 @@ class User implements UserInterface, Serializable
             $this->id,
             $this->identifier,
         ]
-            = unserialize($serialized, ['allowed_classes'=>[__CLASS__]]);
+            = unserialize($serialized, ['allowed_classes' => [__CLASS__]]);
     }
 
     public function getGoogleId(): ?string

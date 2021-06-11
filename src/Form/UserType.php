@@ -22,7 +22,7 @@ class UserType extends AbstractType
                 [
                     'choices' => User::ROLES,
                     'attr'    => [
-                        'class' => 'selectpicker',
+                        'class'      => 'selectpicker',
                         'data-style' => 'btn-success',
                     ],
                 ]
