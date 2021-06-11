@@ -4,9 +4,9 @@
 
 ![screen-playground-one](https://user-images.githubusercontent.com/33978/103650387-edff8280-4f2d-11eb-84c8-486662e25bd5.png)
 
-* Symfony 5.3.*
+* Symfony 5.*
 * Docker compose file for PostgreSQL
-* `dev` login form <br/> `prod` Google and GitHub login
+* `dev` login form <br/> `prod` Social login with Google or GitHub
 * JQuery, Bootstrap and [Bootswatch](https://bootswatch.com/)
 * Prepared for Heroku
 * Likes PHP 8 ;)
