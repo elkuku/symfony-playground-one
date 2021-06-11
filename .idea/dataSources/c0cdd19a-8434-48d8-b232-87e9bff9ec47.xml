@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="main@localhost">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.20">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.23">
     <root id="1">
       <ServerVersion>13.2</ServerVersion>
       <DateStyle>mdy</DateStyle>
@@ -790,7 +790,6 @@ true posixrules
     <database id="2" parent="1" name="main">
       <ObjectId>16384</ObjectId>
       <Owner>main</Owner>
-      <IntrospectionStateNumber>635</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="main_test">
@@ -851,27 +850,18 @@ true posixrules
     </tablespace>
     <schema id="17" parent="2" name="information_schema">
       <ObjectId>13158</ObjectId>
-      <Acl>10=UC/10
-U/10
-</Acl>
       <StateNumber>293</StateNumber>
       <Owner>main</Owner>
     </schema>
     <schema id="18" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
       <Comment>system catalog schema</Comment>
-      <Acl>10=UC/10
-U/10
-</Acl>
       <StateNumber>286</StateNumber>
       <Owner>main</Owner>
     </schema>
     <schema id="19" parent="2" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <Acl>10=UC/10
-UC/10
-</Acl>
       <StateNumber>287</StateNumber>
       <Owner>main</Owner>
       <IntrospectionStateNumber>636</IntrospectionStateNumber>
