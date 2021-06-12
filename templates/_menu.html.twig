@@ -40,11 +40,11 @@
             <div class="ms-auto">
                 {% if app.user %}
                     <a class="nav-link" accesskey="l" href="{{ path('logout') }}" title="{{ 'Logout'|trans }}">
-                        <span class="oi oi-account-logout"></span>
+                        <i class="bi-box-arrow-up-right"></i>
                     </a>
                 {% else %}
                     <a class="nav-link" accesskey="l" href="{{ path('login') }}" title="{{ 'Login'|trans }}">
-                        <span class="oi oi-account-login"></span>
+                        <i class="bi-box-arrow-in-down-right"></i>
                     </a>
                 {% endif %}
             </div>

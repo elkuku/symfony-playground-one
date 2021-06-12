@@ -32,8 +32,9 @@
                         <button
                                 class="btn btn-sm btn-outline-primary"
                                 data-action="modal-form#openModal"
+                                title="Edit"
                         >
-                            <span class="oi oi-pencil"></span>
+                            <span class="bi-pencil-fill"></span>
                         </button>
                         {{ include('_modal.html.twig', {
                             modalTitle: 'Edit user'|trans
@@ -57,7 +58,7 @@
                         <input type="hidden" name="_method" value="DELETE"/>
 
                         <button class="btn btn-sm btn-outline-danger">
-                            <span class="oi oi-trash"></span>
+                            <span class="bi-trash"></span>
                         </button>
                     </form>
                 </div>

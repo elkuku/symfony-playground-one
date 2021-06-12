@@ -12,6 +12,5 @@ import './styles/app.css';
 import './bootstrap';
 
 import '@popperjs/core'
-import 'bootswatch/dist/sketchy/bootstrap.min.css';
-
-require('open-iconic/font/css/open-iconic-bootstrap.css')
+import 'bootswatch/dist/cosmo/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
