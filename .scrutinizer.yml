@@ -1,4 +1,9 @@
 build:
+    nodes:
+        my-node:
+            services:
+                # For available tags, see https://hub.docker.com/_/postgres/
+                postgres: 10
     dependencies:
         override:
             - npm install -g 'yarn'
@@ -6,13 +11,9 @@ build:
             - yarn dev
             - composer install
             - cp .env.scrutinizer .env
-            - bin/console doctrine:migrations:migrate -n
-            - bin/console doctrine:fixtures:load -n
-    nodes:
-        my-node:
-            services:
-                # For available tags, see https://hub.docker.com/_/postgres/
-                postgres: 10
+    project_setup:
+        - bin/console doctrine:migrations:migrate -n
+        - bin/console doctrine:fixtures:load -n
 
 coding_style:
     php:
