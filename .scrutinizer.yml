@@ -15,8 +15,8 @@ build:
                     - bin/console doctrine:migrations:migrate -n
                     - bin/console doctrine:fixtures:load -n
 
-            coding_style:
-                php:
-                    spaces:
-                        within:
-                            brackets: false
+coding_style:
+    php:
+        spaces:
+            within:
+                brackets: false
