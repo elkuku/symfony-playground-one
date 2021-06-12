@@ -6,7 +6,7 @@
 
 * Symfony 5.*
 * Docker compose file for PostgreSQL
-* `dev` login form <br/> `prod` Social login with Google or GitHub
+* `dev` login form <br/> `prod` Social login with Google or GitHub (and [more](https://github.com/knpuniversity/oauth2-client-bundle#step-1-download-the-client-library))
 * JQuery, Bootstrap and [Bootswatch](https://bootswatch.com/)
 * Prepared for Heroku
 * Likes PHP 8 ;)
