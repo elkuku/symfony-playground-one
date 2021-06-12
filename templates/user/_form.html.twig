@@ -4,10 +4,16 @@
 
 <div class="row">
     <div class="col-sm-6">
-        {{ form_row(form.userIdentifier) }}
+        <div class="form-floating">
+            {{ form_widget(form.userIdentifier) }}
+            {{ form_label(form.userIdentifier) }}
+        </div>
     </div>
     <div class="col-sm-6">
-        {{ form_row(form.role) }}
+        <div class="form-floating">
+            {{ form_widget(form.role) }}
+            {{ form_label(form.role) }}
+        </div>
     </div>
 </div>
 
