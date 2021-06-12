@@ -4,19 +4,19 @@ build:
             services:
                 # For available tags, see https://hub.docker.com/_/postgres/
                 postgres: 13
-    dependencies:
-        override:
-            - npm install -g 'yarn'
-            - yarn install
-            - yarn dev
-            - composer install
-            - cp .env.scrutinizer .env
-        after:
-            - bin/console doctrine:migrations:migrate -n
-            - bin/console doctrine:fixtures:load -n
+            dependencies:
+                override:
+                    - npm install -g 'yarn'
+                    - yarn install
+                    - yarn dev
+                    - composer install
+                    - cp .env.scrutinizer .env
+                after:
+                    - bin/console doctrine:migrations:migrate -n
+                    - bin/console doctrine:fixtures:load -n
 
-coding_style:
-    php:
-        spaces:
-            within:
-                brackets: false
+            coding_style:
+                php:
+                    spaces:
+                        within:
+                            brackets: false
