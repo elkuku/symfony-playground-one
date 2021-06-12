@@ -3,8 +3,9 @@
     <tr>
         <th>Id</th>
         <th>Identifier</th>
+        <th>Social</th>
         <th>Role</th>
-        <th>actions</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -12,6 +13,15 @@
         <tr>
             <td>{{ user.id }}</td>
             <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.userIdentifier }}</a></td>
+            <td>
+                {% if user.googleId %}
+                    Google
+                {% elseif user.gitHubId %}
+                    GitHub
+                {% else %}
+                    n/a
+                {% endif %}
+            </td>
             <td>{{ user.role|role_name }}</td>
             <td>
                 <div class="btn-group">
@@ -20,7 +30,7 @@
                     }) }}
                     >
                         <button
-                                class="btn btn-outline-primary"
+                                class="btn btn-sm btn-outline-primary"
                                 data-action="modal-form#openModal"
                         >
                             <span class="oi oi-pencil"></span>
@@ -46,7 +56,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}"/>
                         <input type="hidden" name="_method" value="DELETE"/>
 
-                        <button class="btn btn-outline-danger">
+                        <button class="btn btn-sm btn-outline-danger">
                             <span class="oi oi-trash"></span>
                         </button>
                     </form>

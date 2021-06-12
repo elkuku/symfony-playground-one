@@ -29,7 +29,7 @@ class UserController extends AbstractController
         return $this->render(
             'user/'.$template,
             [
-                'users' => $userRepository->findAll(),
+                'users' => $userRepository->findBy([], ['id' => 'ASC']),
             ]
         );
     }
