@@ -4,3 +4,9 @@ build:
             - npm install -g 'yarn'
             - yarn install
             - composer install
+
+coding_style:
+    php:
+        spaces:
+            within:
+                brackets: false
