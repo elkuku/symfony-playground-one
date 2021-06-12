@@ -6,6 +6,8 @@ build:
             - yarn dev
             - composer install
             - cp .env.scrutinizer .env
+            - bin/console doctrine:migrations:migrate -n
+            - bin/console doctrine:fixtures:load -n
     nodes:
         my-node:
             services:
