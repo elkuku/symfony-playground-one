@@ -93,7 +93,7 @@ class GitHubAuthenticator extends AbstractAuthenticator
             return $user;
         }
 
-        // @todo remove: Fetch user by email
+        // @todo remove: Fetch user by identifier
         if ($user = $this->userRepository->findOneBy(
             ['identifier' => $resourceOwner->getNickname()]
         )

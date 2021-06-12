@@ -26,15 +26,15 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * Find all active users.
+     * Find all users.
      *
      * @return User[]
      */
-    public function findActiveUsers(): array
+    public function findUsers(): array
     {
         return $this->findBy(
-            ['role' => 'ROLE_USER', 'state' => 1],
-            ['name' => 'ASC']
+            ['role' => User::ROLES['User']],
+            ['id' => 'ASC']
         );
     }
 }
