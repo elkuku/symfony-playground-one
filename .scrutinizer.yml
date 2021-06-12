@@ -3,3 +3,4 @@ build:
         override:
             - npm install -g 'yarn'
             - yarn install
+            - composer install
