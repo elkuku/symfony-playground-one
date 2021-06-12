@@ -17,8 +17,8 @@ class User implements UserInterface, Serializable
 {
     public const ROLES
         = [
-            'User'  => 'ROLE_USER',
-            'Admin' => 'ROLE_ADMIN',
+            'user'  => 'ROLE_USER',
+            'admin' => 'ROLE_ADMIN',
         ];
 
     /**
@@ -32,12 +32,12 @@ class User implements UserInterface, Serializable
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank
      */
-    private string $identifier = '';
+    private ?string $identifier = '';
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private string $role = 'ROLE_USER';
+    private ?string $role = 'ROLE_USER';
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -80,7 +80,7 @@ class User implements UserInterface, Serializable
         return $this->identifier;
     }
 
-    public function setUserIdentifier(string $identifier): self
+    public function setUserIdentifier(?string $identifier): self
     {
         $this->identifier = $identifier;
 

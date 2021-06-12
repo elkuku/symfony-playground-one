@@ -63,13 +63,13 @@ class UserAdminCommand extends Command
         $question = new ChoiceQuestion(
             'Please select an option (defaults to exit)',
             [
+                'Exit',
                 'List Users',
                 'Create User',
                 'Edit User',
                 'Delete User',
-                'Exit',
             ],
-            4
+            0
         );
         $question->setErrorMessage('Choice %s is invalid.');
 
@@ -151,20 +151,6 @@ class UserAdminCommand extends Command
             );
             if (!$identifier) {
                 $io->warning('Identifier required :(');
-            } else {
-                $emailConstraint = new Email();
-                $emailConstraint->message = 'Invalid email address';
-
-                $errors = $this->validator->validate(
-                    $identifier,
-                    $emailConstraint
-                );
-
-                if (count($errors)) {
-                    $io->warning($errors[0]->getMessage());
-
-                    $identifier = null;
-                }
             }
         } while ($identifier === null);
 
@@ -177,12 +163,8 @@ class UserAdminCommand extends Command
             $input,
             $output,
             (new ChoiceQuestion(
-                'User role (ROLE_USER)',
-                [
-                    'ROLE_USER',
-                    'ROLE_ADMIN',
-                ],
-                0
+                'User role',
+                array_values(User::ROLES)
             ))
                 ->setErrorMessage('Choice %s is invalid.')
         );

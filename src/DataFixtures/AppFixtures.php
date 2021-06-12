@@ -12,13 +12,13 @@ class AppFixtures extends Fixture
     {
         $user = (new User())
             ->setUserIdentifier('user@example.com')
-            ->setRole('ROLE_USER');
+            ->setRole(User::ROLES['user']);
 
         $manager->persist($user);
 
         $adminUser = (new User())
             ->setUserIdentifier('admin@example.com')
-            ->setRole('ROLE_ADMIN');
+            ->setRole(User::ROLES['admin']);
 
         $manager->persist($adminUser);
 
