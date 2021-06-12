@@ -3,6 +3,7 @@ build:
         override:
             - npm install -g 'yarn'
             - yarn install
+            - yarn dev
             - composer install
 
 coding_style:
