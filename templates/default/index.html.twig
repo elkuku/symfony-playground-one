@@ -8,20 +8,21 @@
             margin: 1em auto;
             max-width: 800px;
             width: 95%;
-            font: 18px/1.5 sans-serif;
         }
 
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
+        /*.example-wrapper code {*/
+        /*    background: #F5F5F5;*/
+        /*    padding: 2px 6px;*/
+        /*}*/
     </style>
 
     <div class="example-wrapper">
         <h2>Hello {{ controller_name }}!</h2>
 
         {% if app.user %}
-            <h4 class="bg-success">Welcome {{ app.user.username }}</h4>
+            <div class="alert alert-success">
+                <h4>Welcome {{ app.user.username }}!</h4>
+            </div>
         {% else %}
             <h4>
                 Use <code>symfony console user-admin</code> to create a user to <a href="{{ path('login') }}">log in</a>...
@@ -42,17 +43,7 @@
             </li>
         </ul>
 
-        <div data-controller="hello" class="alert alert-success">Stimulus test</div>
-        <!--
-                <hr>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-                    Tooltip on top
-                </button>
-                <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
-                    Popover on top
-                </button>
-                <hr>
-        -->
+        <div data-controller="hello" class="alert alert-info">Stimulus test</div>
 
         <div class="text-center">
             <a href="http://www.wtfpl.net/">
