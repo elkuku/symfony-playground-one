@@ -15,6 +15,7 @@
 ## Installation
 
 0. Use the `bin/install` command **OR** execute the steps 1-5 below:
+<hr/>
 
 1. `symfony composer install`
 1. `yarn`
