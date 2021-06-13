@@ -25,6 +25,7 @@ class UserAdminCommand extends Command
 {
     private InputInterface $input;
     private OutputInterface $output;
+    private SymfonyStyle $io;
     private const OPTIONS
         = [
             'Exit',
@@ -45,74 +46,94 @@ class UserAdminCommand extends Command
         InputInterface $input,
         OutputInterface $output
     ): int {
-        $io = new SymfonyStyle($input, $output);
-
-        $io->title('KuKu\'s User Admin');
-
         $this->input = $input;
         $this->output = $output;
+        $this->io = new SymfonyStyle($input, $output);
 
-        $this->showMenu();
+        $this->io->title('KuKu\'s User Admin');
+
+        do {
+            $exit = $this->showMenu();
+        } while (!$exit);
 
         return Command::SUCCESS;
     }
 
-    private function showMenu(): void {
-        $io = new SymfonyStyle($this->input, $this->output);
-
-        $users = $this->entityManager->getRepository(User::class)->findAll();
-
-        $io->text(
-            sprintf(
-                '<fg=cyan>There are %d users in the database.</>',
-                count($users)
-            )
-        );
-
-        $helper = $this->getHelper('question');
-        $question = new ChoiceQuestion(
-            'Please select an option (defaults to exit)',
-            self::OPTIONS,
-            0
-        );
-        $question->setErrorMessage('Choice %s is invalid.');
-
-        $answer = $helper->ask($this->input, $this->output, $question);
+    private function showMenu(): int
+    {
+        $answer = $this->getAnswer();
         $this->output->writeln($answer);
 
         try {
             switch ($answer) {
                 case 'List Users':
-                    $this->renderUsersTable($users);
+                    $this->renderUsersTable();
                     break;
                 case 'Create User':
                     $this->createUser();
-                    $io->success('User created');
+                    $this->io->success('User created');
                     break;
                 case 'Edit User':
-                    $io->text('Edit not implemented yet :(');
+                    $this->io->warning('Edit not implemented yet :(');
                     break;
                 case 'Delete User':
                     $this->deleteUser();
-                    $io->success('User has been removed');
+                    $this->io->success('User has been removed');
                     break;
                 case 'Exit':
-                    $io->text('have Fun =;)');
-                    return;
+                    $this->io->text('have Fun =;)');
+
+                    return Command::FAILURE;
                 default:
                     throw new UnexpectedValueException(
                         'Unknown answer: '.$answer
                     );
             }
         } catch (Exception $exception) {
-            $io->error($exception->getMessage());
+            $this->io->error($exception->getMessage());
         }
-        $this->showMenu();
+
+        return Command::SUCCESS;
     }
 
-    private function renderUsersTable(array $users): void {
+    private function getAnswer(): string
+    {
+        $question = (new ChoiceQuestion(
+            'Please select an option (defaults to exit)',
+            [
+                'Exit',
+                'List Users',
+                'Create User',
+                'Edit User',
+                'Delete User',
+            ],
+            0
+        ))
+            ->setErrorMessage('Choice %s is invalid.');
+
+        $answer = $this->getHelper('question')->ask(
+            $this->input,
+            $this->output,
+            $question
+        );
+
+        return $answer;
+    }
+
+    private function renderUsersTable(): void
+    {
         $table = new Table($this->output);
         $table->setHeaders(['ID', 'Identifier', 'Role']);
+
+        $users = $this->entityManager->getRepository(User::class)
+            ->findBy([], ['id' => 'ASC']);
+
+        $this->io->text(
+            sprintf(
+                '<fg=cyan>There are %d users in the database.</>',
+                count($users)
+            )
+        );
 
         /* @type User $user */
         foreach ($users as $user) {
@@ -127,7 +148,8 @@ class UserAdminCommand extends Command
         $table->render();
     }
 
-    private function askIdentifier(): string {
+    private function askIdentifier(): string
+    {
         $io = new SymfonyStyle($this->input, $this->output);
         do {
             $identifier = $this->getHelper('question')->ask(
@@ -156,7 +178,8 @@ class UserAdminCommand extends Command
         );
     }
 
-    private function createUser(): void {
+    private function createUser(): void
+    {
         $identifier = $this->askIdentifier();
         $role = $this->askRole();
 
