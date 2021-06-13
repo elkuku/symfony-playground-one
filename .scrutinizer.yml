@@ -1,9 +1,10 @@
 build:
     nodes:
-        my-node:
-            services:
-                # For available tags, see https://hub.docker.com/_/postgres/
-                postgres: 13
+        tests: false
+#        my-node:
+#            services:
+#                # For available tags, see https://hub.docker.com/_/postgres/
+#                postgres: 13
     dependencies:
         override:
             - npm install -g 'yarn'
@@ -14,7 +15,6 @@ build:
 #        after:
 #            - bin/console doctrine:migrations:migrate -n
 #            - bin/console doctrine:fixtures:load -n
-        tests: false
 
 coding_style:
     php:
