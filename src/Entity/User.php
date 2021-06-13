@@ -58,7 +58,7 @@ class User implements UserInterface, Serializable
         return [$this->getRole()];
     }
 
-    public function getRole(): string
+    public function getRole(): ?string
     {
         return $this->role;
     }
@@ -75,7 +75,7 @@ class User implements UserInterface, Serializable
         return $this->id;
     }
 
-    public function getUserIdentifier(): string
+    public function getUserIdentifier(): ?string
     {
         return $this->identifier;
     }
@@ -87,7 +87,7 @@ class User implements UserInterface, Serializable
         return $this;
     }
 
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return $this->identifier;
     }
