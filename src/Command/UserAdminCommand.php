@@ -98,7 +98,7 @@ class UserAdminCommand extends Command
                     break;
                 case 'Exit':
                     $io->text('have Fun =;)');
-                    exit(Command::SUCCESS);
+                    return;
                 default:
                     throw new UnexpectedValueException(
                         'Unknown answer: '.$answer
