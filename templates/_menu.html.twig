@@ -4,17 +4,17 @@
             PlaygroundOne
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            {% if app.user %}
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">###</a>
-                    </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">###</a>
+                </li>
+                {% if app.user %}
                     <li class="nav-item">
                         <a class="nav-link" href="#">###</a>
                     </li>
@@ -35,8 +35,8 @@
                             </ul>
                         </li>
                     {% endif %}
-                </ul>
-            {% endif %}
+                {% endif %}
+            </ul>
             <div class="ms-auto">
                 {% if app.user %}
                     <a class="nav-link" accesskey="l" href="{{ path('logout') }}" title="{{ 'Logout'|trans }}">

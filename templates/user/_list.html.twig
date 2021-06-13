@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-hover table-sm table-striped">
     <thead>
     <tr>
         <th>Id</th>
@@ -15,11 +15,11 @@
             <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.userIdentifier }}</a></td>
             <td>
                 {% if user.googleId %}
-                    Google
+                    <i class="bi-google" title="Google ID: {{ user.googleId }}"></i>
                 {% elseif user.gitHubId %}
-                    GitHub
+                    <i class="bi-github" title="GitHub ID: {{ user.gitHubId }}"></i>
                 {% else %}
-                    n/a
+                    -
                 {% endif %}
             </td>
             <td>{{ user.role|role_name }}</td>
@@ -52,7 +52,7 @@
                             }) }}"
                             method="post"
                             data-action="submit-confirm#onSubmit"
-                            class="form-inline"
+                            class="form-nomargin"
                     >
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}"/>
                         <input type="hidden" name="_method" value="DELETE"/>

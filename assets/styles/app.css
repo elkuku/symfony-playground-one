@@ -33,3 +33,7 @@ body > .container-fluid {
 .modal-body button, .modal-body a {
     display: none;
 }
+
+form.form-nomargin {
+    margin-bottom: 0;
+}
