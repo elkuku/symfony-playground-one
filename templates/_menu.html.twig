@@ -4,39 +4,32 @@
             PlaygroundOne
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">###</a>
-                </li>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-link" href="#">###</a>
                 {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">###</a>
-                    </li>
+                    <a class="nav-link" href="#">###</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item dropdown">
+                        <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" role="link"
                                data-bs-toggle="dropdown">
                                 {{ 'Admin'|trans }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                                <li><a class="dropdown-item" href="{{ path('user_index') }}">{{ 'Users'|trans }}</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">###</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">###</a></li>
-                            </ul>
-                        </li>
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <a class="dropdown-item" href="{{ path('user_index') }}">{{ 'Users'|trans }}</a>
+                                <a class="dropdown-item" href="#">###</a>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" href="#">###</a>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endif %}
-            </ul>
+            </div>
             <div class="ms-auto">
                 {% if app.user %}
                     <a class="nav-link" accesskey="l" href="{{ path('logout') }}" title="{{ 'Logout'|trans }}">
