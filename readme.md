@@ -16,23 +16,12 @@
 
 ## Installation
 
-Clone the repo then use the `bin/install` command **OR** execute the following steps manually:
-
-----
-
-1. `symfony composer install`
-1. `yarn`
-1. `yarn dev`
-1. `bin/start` - a custom startup script that runs `docker-compose up`, `symony server:start` and `symfony open:local`
-1. `symfony console doctrine:migrations:migrate`
+Clone the repo then use the `bin/install` command or execute the script content manually.
    
-----
-
-Use `symfony console user-admin` to create an admin user.
-
 ## Usage
 
-Use the `bin/start` and `bin/stop` scripts to start and stop the environment.
+* Use `symfony console user-admin` to create an admin user.
+* Use the `bin/start` and `bin/stop` scripts to start and stop the environment.
 
 ## Testing
 
