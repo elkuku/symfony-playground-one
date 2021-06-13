@@ -11,9 +11,10 @@ build:
             - yarn dev
             - composer install
             - cp .env.scrutinizer .env
-        after:
-            - bin/console doctrine:migrations:migrate -n
-            - bin/console doctrine:fixtures:load -n
+#        after:
+#            - bin/console doctrine:migrations:migrate -n
+#            - bin/console doctrine:fixtures:load -n
+        tests: false
 
 coding_style:
     php:
