@@ -16,6 +16,7 @@ filter:
         - 'tests/*'
         - 'bin/*'
         - 'src/Kernel.php'
+        - 'public/index.php'
 
 coding_style:
     php:
