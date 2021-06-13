@@ -10,9 +10,10 @@ build:
             - cp .env.scrutinizer .env
             - bin/console doctrine:migrations:migrate -n
             - bin/console doctrine:fixtures:load -n
-    filter:
-        excluded_paths:
-            - "src/Kernel.php"
+
+filter:
+    excluded_paths:
+        - "src/Kernel.php"
 
 coding_style:
     php:
