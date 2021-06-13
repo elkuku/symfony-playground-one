@@ -13,7 +13,9 @@ build:
 
 filter:
     excluded_paths:
-        - "src/Kernel.php"
+        - 'tests/*'
+        - 'bin/*'
+        - 'src/Kernel.php'
 
 coding_style:
     php:
