@@ -1,8 +1,5 @@
 build:
-    #    nodes:
-    #        my-node:
     services:
-        # For available tags, see https://hub.docker.com/_/postgres/
         postgres: 13
     dependencies:
         override:
@@ -11,10 +8,11 @@ build:
             - yarn dev
             - composer install
             - cp .env.scrutinizer .env
-#        after:
             - bin/console doctrine:migrations:migrate -n
             - bin/console doctrine:fixtures:load -n
-#    tests: false
+    filter:
+        excluded_paths:
+            - "src/Kernel.php"
 
 coding_style:
     php:
