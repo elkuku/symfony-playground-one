@@ -13,7 +13,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use UnexpectedValueException;
 
@@ -24,6 +23,17 @@ use UnexpectedValueException;
 )]
 class UserAdminCommand extends Command
 {
+    private InputInterface $input;
+    private OutputInterface $output;
+    private const OPTIONS
+        = [
+            'Exit',
+            'List Users',
+            'Create User',
+            'Edit User',
+            'Delete User',
+        ];
+
     public function __construct(
         private EntityManagerInterface $entityManager,
         private ValidatorInterface $validator
@@ -39,16 +49,16 @@ class UserAdminCommand extends Command
 
         $io->title('KuKu\'s User Admin');
 
-        $this->showMenu($input, $output);
+        $this->input = $input;
+        $this->output = $output;
+
+        $this->showMenu();
 
         return Command::SUCCESS;
     }
 
-    private function showMenu(
-        InputInterface $input,
-        OutputInterface $output
-    ): void {
-        $io = new SymfonyStyle($input, $output);
+    private function showMenu(): void {
+        $io = new SymfonyStyle($this->input, $this->output);
 
         $users = $this->entityManager->getRepository(User::class)->findAll();
 
@@ -62,51 +72,33 @@ class UserAdminCommand extends Command
         $helper = $this->getHelper('question');
         $question = new ChoiceQuestion(
             'Please select an option (defaults to exit)',
-            [
-                'Exit',
-                'List Users',
-                'Create User',
-                'Edit User',
-                'Delete User',
-            ],
+            self::OPTIONS,
             0
         );
         $question->setErrorMessage('Choice %s is invalid.');
 
-        $answer = $helper->ask($input, $output, $question);
-        $output->writeln($answer);
+        $answer = $helper->ask($this->input, $this->output, $question);
+        $this->output->writeln($answer);
 
         try {
             switch ($answer) {
                 case 'List Users':
-                    $this->renderUsersTable($output, $users);
-                    $this->showMenu($input, $output);
+                    $this->renderUsersTable($users);
                     break;
                 case 'Create User':
-                    $identifier = $this->askIdentifier($input, $output);
-                    $role = $this->askRole($input, $output);
-
-                    $this->createUser($identifier, $role);
+                    $this->createUser();
                     $io->success('User created');
-                    $this->showMenu($input, $output);
                     break;
                 case 'Edit User':
                     $io->text('Edit not implemented yet :(');
-                    $this->showMenu($input, $output);
                     break;
                 case 'Delete User':
-                    $id = $helper->ask(
-                        $input,
-                        $output,
-                        new Question('User ID to delete: ')
-                    );
-                    $this->deleteUser($id);
+                    $this->deleteUser();
                     $io->success('User has been removed');
-                    $this->showMenu($input, $output);
                     break;
                 case 'Exit':
                     $io->text('have Fun =;)');
-                    break;
+                    exit(Command::SUCCESS);
                 default:
                     throw new UnexpectedValueException(
                         'Unknown answer: '.$answer
@@ -114,15 +106,12 @@ class UserAdminCommand extends Command
             }
         } catch (Exception $exception) {
             $io->error($exception->getMessage());
-            $this->showMenu($input, $output);
         }
+        $this->showMenu();
     }
 
-    private function renderUsersTable(
-        OutputInterface $output,
-        array $users
-    ): void {
-        $table = new Table($output);
+    private function renderUsersTable(array $users): void {
+        $table = new Table($this->output);
         $table->setHeaders(['ID', 'Identifier', 'Role']);
 
         /* @type User $user */
@@ -138,15 +127,12 @@ class UserAdminCommand extends Command
         $table->render();
     }
 
-    private function askIdentifier(
-        InputInterface $input,
-        OutputInterface $output
-    ): string {
-        $io = new SymfonyStyle($input, $output);
+    private function askIdentifier(): string {
+        $io = new SymfonyStyle($this->input, $this->output);
         do {
             $identifier = $this->getHelper('question')->ask(
-                $input,
-                $output,
+                $this->input,
+                $this->output,
                 new Question('Identifier: ')
             );
             if (!$identifier) {
@@ -157,11 +143,11 @@ class UserAdminCommand extends Command
         return $identifier;
     }
 
-    private function askRole(InputInterface $input, OutputInterface $output)
+    private function askRole()
     {
         return $this->getHelper('question')->ask(
-            $input,
-            $output,
+            $this->input,
+            $this->output,
             (new ChoiceQuestion(
                 'User role',
                 array_values(User::ROLES)
@@ -170,8 +156,10 @@ class UserAdminCommand extends Command
         );
     }
 
-    private function createUser(string $identifier, string $role): void
-    {
+    private function createUser(): void {
+        $identifier = $this->askIdentifier();
+        $role = $this->askRole();
+
         $user = (new User())
             ->setUserIdentifier($identifier)
             ->setRole($role);
@@ -180,8 +168,13 @@ class UserAdminCommand extends Command
         $this->entityManager->flush();
     }
 
-    private function deleteUser(int $id): void
+    private function deleteUser(): void
     {
+        $id = $this->getHelper('question')->ask(
+            $this->input,
+            $this->output,
+            new Question('User ID to delete: ')
+        );
         $user = $this->entityManager->getRepository(User::class)->findOneBy(
             ['id' => $id]
         );
