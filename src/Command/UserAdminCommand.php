@@ -13,7 +13,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use UnexpectedValueException;
 
 #[AsCommand(
@@ -26,18 +25,9 @@ class UserAdminCommand extends Command
     private InputInterface $input;
     private OutputInterface $output;
     private SymfonyStyle $io;
-    private const OPTIONS
-        = [
-            'Exit',
-            'List Users',
-            'Create User',
-            'Edit User',
-            'Delete User',
-        ];
 
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private ValidatorInterface $validator
     ) {
         parent::__construct();
     }
@@ -66,15 +56,15 @@ class UserAdminCommand extends Command
 
         try {
             switch ($answer) {
-                case 'List Users':
-                    $this->renderUsersTable();
-                    break;
                 case 'Create User':
                     $this->createUser();
                     $this->io->success('User created');
                     break;
-                case 'Edit User':
-                    $this->io->warning('Edit not implemented yet :(');
+                case 'Read Users':
+                    $this->renderUsersTable();
+                    break;
+                case 'Update User':
+                    $this->io->warning('Update is not implemented yet :(');
                     break;
                 case 'Delete User':
                     $this->deleteUser();
@@ -102,22 +92,20 @@ class UserAdminCommand extends Command
             'Please select an option (defaults to exit)',
             [
                 'Exit',
-                'List Users',
                 'Create User',
-                'Edit User',
+                'Read Users',
+                'Update User',
                 'Delete User',
             ],
             0
         ))
             ->setErrorMessage('Choice %s is invalid.');
 
-        $answer = $this->getHelper('question')->ask(
+        return $this->getHelper('question')->ask(
             $this->input,
             $this->output,
             $question
         );
-
-        return $answer;
     }
 
     private function renderUsersTable(): void
@@ -141,7 +129,7 @@ class UserAdminCommand extends Command
                 [
                     $user->getId(),
                     $user->getUserIdentifier(),
-                    implode(", ", $user->getRoles()),
+                    implode(', ', $user->getRoles()),
                 ]
             );
         }
