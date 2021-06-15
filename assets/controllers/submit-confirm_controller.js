@@ -9,6 +9,7 @@ export default class extends Controller {
         text: String,
         icon: String,
         confirmButtonText: String,
+        cancelButtonText: String,
         submitAsync: Boolean
     }
 
@@ -26,6 +27,7 @@ export default class extends Controller {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: this.confirmButtonTextValue || 'Yes',
+            cancelButtonText: this.cancelButtonTextValue || 'Cancel',
             showLoaderOnConfirm: true,
             preConfirm: () => {
                 return this.submitForm()

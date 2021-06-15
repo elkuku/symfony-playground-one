@@ -1,0 +1,26 @@
+'Made with {link}': 'Hecho con {link}'
+'Are you sure you want to delete this item?': '¿Esta seguro que quiere borrar este item?'
+Delete: Borrar
+Update: Actualizar
+Save: Guardar
+'Create new': 'Crear nuevo'
+Edit: Editar
+'Back to list': 'Regresar a la lista'
+Admin: Admin
+Users: Usuarios
+Logout: Salir
+Login: Ingresar
+system.welcome.message: '¡Hola {controller_name}!'
+'Please activate JavaScript!': '¡Por favor active JavaScript!'
+system.footer.content: 'Ponga aqui el contenido del footer.'
+User: Usuario
+'User index': 'Indice de usuarios'
+'New User': 'Nuevo usuario'
+'Edit User': 'Editar usuario'
+'Create new User': 'Crear nuevo Usuario'
+Actions: Acciones
+'Remove this item?': '¿Remover esa entrada?'
+'Yes, remove it!': '¡Si, remuevelo!'
+'No records found': 'No se encontraron entradas'
+Loading...: Cargando...
+Cancel: Cancelar

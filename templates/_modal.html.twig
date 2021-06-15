@@ -15,7 +15,7 @@
                  data-modal-form-target="modalBody"
                  data-action="submit->modal-form#submitForm"
             >
-                {{ modalContent|default('Loading...') }}
+                {{ modalContent|default('Loading...'|trans) }}
             </div>
             <div class="modal-footer">
                 <button
@@ -23,7 +23,7 @@
                         class="btn btn-secondary"
                         data-dismiss="modal"
                         data-bs-dismiss="modal"
-                        title="Cancel"
+                        title="{{ 'Cancel'|trans }}"
                 >
                     <span class="bi-arrow-left"></span>
                 </button>
@@ -31,7 +31,7 @@
                         type="button"
                         class="btn btn-primary"
                         data-action="modal-form#submitForm"
-                        title="Save"
+                        title="{{ 'Save'|trans }}"
                 >
                     <span class="bi-check-lg">
                 </button>

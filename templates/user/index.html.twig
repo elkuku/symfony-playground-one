@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% import '_/buttons.html.twig' as buttons %}
 
-{% block title %}User index{% endblock %}
+{% block title %}{{ 'User index'|trans }}{% endblock %}
 
 {% block body %}
     <div
@@ -18,15 +18,16 @@
                 <button
                         class="btn btn-outline-success"
                         data-action="modal-form#openModal"
+                        title="{{ 'New User'|trans }}"
                 ><i class="bi-plus-lg"></i>
                 </button>
                 {{ include('_modal.html.twig', {
-                    modalTitle: 'New User'
+                    modalTitle: 'New User'|trans
                 }) }}
             </div>
         </div>
 
-        <h1>User index</h1>
+        <h1>{{ 'User index'|trans }}</h1>
 
         <div data-reload-content-target="content">
             {{ include('user/_list.html.twig') }}

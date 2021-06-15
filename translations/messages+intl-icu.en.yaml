@@ -1,13 +1,26 @@
-Update: Update
-Save: Save
+system.welcome.message: 'Hello {controller_name}!'
+system.footer.content: 'Place footer content here.'
+'Made with {link}': 'Made with {link}'
+'Please activate JavaScript!': 'Please activate JavaScript!'
 'Are you sure you want to delete this item?': 'Are you sure you want to delete this item?'
-Delete: Delete
 'Create new': 'Create new'
-Edit: Edit
 'Back to list': 'Back to list'
+Edit: Edit
+Update: Update
+Delete: Delete
+Save: Save
+Cancel: Cancel
 Admin: Admin
 Users: Users
-Logout: Logout
+User: User
 Login: Login
-'Made with {link}': 'Made with {link}'
-'Edit user': 'Edit user'
+Logout: Logout
+'User index': 'User index'
+'New User': 'New User'
+'Edit User': 'Edit User'
+'Create new User': 'Create new User'
+Actions: Actions
+'Remove this item?': 'Remove this item?'
+'Yes, remove it!': 'Yes, remove it!'
+'No records found': 'No records found'
+Loading...: Loading...

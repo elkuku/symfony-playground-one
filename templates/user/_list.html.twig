@@ -5,7 +5,7 @@
         <th>Identifier</th>
         <th>Social</th>
         <th>Role</th>
-        <th>Actions</th>
+        <th>{{ 'Actions'|trans }}</th>
     </tr>
     </thead>
     <tbody>
@@ -32,19 +32,20 @@
                         <button
                                 class="btn btn-sm btn-outline-primary"
                                 data-action="modal-form#openModal"
-                                title="Edit"
+                                title="{{ 'Edit'|trans }}"
                         >
                             <span class="bi-pencil-fill"></span>
                         </button>
                         {{ include('_modal.html.twig', {
-                            modalTitle: 'Edit user'|trans
+                            modalTitle: 'Edit User'|trans
                         }) }}
                     </span>
                     <form
                             {{ stimulus_controller('submit-confirm', {
-                                title: "Remove this item?",
-                                icon: "warning",
-                                confirmButtonText: "Yes, remove it!",
+                                title: 'Remove this item?'|trans,
+                                icon: 'warning',
+                                confirmButtonText: 'Yes, remove it!'|trans,
+                                cancelButtonText: 'Cancel'|trans,
                                 submitAsync: true,
                             }) }}
                             action="{{ path('user_delete', {
@@ -57,7 +58,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}"/>
                         <input type="hidden" name="_method" value="DELETE"/>
 
-                        <button class="btn btn-sm btn-outline-danger">
+                        <button class="btn btn-sm btn-outline-danger" title="{{ 'Delete'|trans }}">
                             <span class="bi-trash"></span>
                         </button>
                     </form>
@@ -66,7 +67,7 @@
         </tr>
     {% else %}
         <tr>
-            <td colspan="4">no records found</td>
+            <td colspan="4">{{ 'No records found'|trans }}</td>
         </tr>
     {% endfor %}
     </tbody>
