@@ -28,7 +28,7 @@
             </h4>
         {% endif %}
 
-        <h4>We're using Symfony <code>{{ symfony_version }}</code> and PHP <code>{{ php_version }}</code></h4>
+        <h4>We're using Symfony <code>{{ symfony_version }}</code> on PHP <code>{{ php_version }}</code></h4>
 
         This friendly message is coming from:
         <ul>
@@ -39,6 +39,9 @@
             <li>Your template at <code>
                     <a href="{{ '/home/elkuku/repos/symfony-playground-one/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a>
                 </code>
+            </li>
+            <li>
+                Your project at <code>{{ project_dir }}</code>
             </li>
         </ul>
 
