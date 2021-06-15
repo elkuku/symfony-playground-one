@@ -3,7 +3,7 @@
 [![Build Status](https://www.travis-ci.com/elkuku/symfony-playground-one.svg?branch=master)](https://www.travis-ci.com/elkuku/symfony-playground-one)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elkuku/symfony-playground-one/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elkuku/symfony-playground-one/?branch=master)
 
-![screen-playground-one](https://user-images.githubusercontent.com/33978/103650387-edff8280-4f2d-11eb-84c8-486662e25bd5.png)
+![screen-playground-one](https://user-images.githubusercontent.com/33978/122070193-5d21b280-cdbb-11eb-803d-f9e76c728d7a.png)
 
 ## What's this??
 
