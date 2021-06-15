@@ -6,6 +6,7 @@
 ![screen-playground-one](https://user-images.githubusercontent.com/33978/122070193-5d21b280-cdbb-11eb-803d-f9e76c728d7a.png)
 
 ## What's this??
+An opinionated [Symfony](https://symfony.com) project template including:
 
 * Symfony 5.*
 * Docker compose file for PostgreSQL
