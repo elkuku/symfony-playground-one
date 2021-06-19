@@ -139,12 +139,6 @@
     "laminas/laminas-code": {
         "version": "4.3.0"
     },
-    "laminas/laminas-eventmanager": {
-        "version": "3.3.1"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.2.0"
-    },
     "league/oauth2-client": {
         "version": "2.6.0"
     },
@@ -558,6 +552,9 @@
     },
     "symfony/property-info": {
         "version": "v5.3.1"
+    },
+    "symfony/proxy-manager-bridge": {
+        "version": "v5.3.0"
     },
     "symfony/routing": {
         "version": "5.3",
