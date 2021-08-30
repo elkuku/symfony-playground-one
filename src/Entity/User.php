@@ -111,13 +111,13 @@ class User implements UserInterface, Serializable
         );
     }
 
-    public function unserialize($serialized): void
+    public function unserialize($data): void
     {
         [
             $this->id,
             $this->identifier,
         ]
-            = unserialize($serialized, ['allowed_classes' => [__CLASS__]]);
+            = unserialize($data, ['allowed_classes' => [__CLASS__]]);
     }
 
     public function getGoogleId(): ?string
