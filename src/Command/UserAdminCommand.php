@@ -153,7 +153,7 @@ class UserAdminCommand extends Command
         return $identifier;
     }
 
-    private function askRole()
+    private function askRole(): mixed
     {
         return $this->getHelper('question')->ask(
             $this->input,
