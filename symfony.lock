@@ -1,6 +1,6 @@
 {
     "composer/package-versions-deprecated": {
-        "version": "1.11.99.3"
+        "version": "1.11.99.4"
     },
     "dama/doctrine-test-bundle": {
         "version": "4.0",
@@ -39,7 +39,7 @@
         "version": "1.5.0"
     },
     "doctrine/dbal": {
-        "version": "2.13.2"
+        "version": "2.13.3"
     },
     "doctrine/deprecations": {
         "version": "v0.5.3"
@@ -149,13 +149,13 @@
         "version": "4.0.0"
     },
     "monolog/monolog": {
-        "version": "2.3.2"
+        "version": "2.3.4"
     },
     "myclabs/deep-copy": {
         "version": "1.10.2"
     },
     "nikic/php-parser": {
-        "version": "v4.12.0"
+        "version": "v4.13.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.10.0"
@@ -179,13 +179,13 @@
         "version": "5.2.2"
     },
     "phpdocumentor/type-resolver": {
-        "version": "1.4.0"
+        "version": "1.5.0"
     },
     "phpspec/prophecy": {
-        "version": "1.13.0"
+        "version": "1.14.0"
     },
     "phpunit/php-code-coverage": {
-        "version": "9.2.6"
+        "version": "9.2.7"
     },
     "phpunit/php-file-iterator": {
         "version": "3.0.5"
@@ -235,7 +235,7 @@
         "version": "1.1.1"
     },
     "psr/log": {
-        "version": "1.1.4"
+        "version": "2.0.0"
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
@@ -581,7 +581,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "5.3",
-            "ref": "227eba5e0c7e8fc4beda3537c3d81dc23ba08182"
+            "ref": "9c4fcf79873f7400c885b90935f7163233615d6f"
         },
         "files": [
             "config/packages/security.yaml"
@@ -694,7 +694,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.9",
-            "ref": "404714014dd6ff7de9aa0f9582d592147359e617"
+            "ref": "0f274572ea315eb3b5884518a50ca43f211b4534"
         },
         "files": [
             "assets/app.js",
@@ -717,10 +717,10 @@
         "version": "1.2.1"
     },
     "twig/extra-bundle": {
-        "version": "v3.3.1"
+        "version": "v3.3.3"
     },
     "twig/twig": {
-        "version": "v3.3.2"
+        "version": "v3.3.3"
     },
     "webmozart/assert": {
         "version": "1.10.0"
