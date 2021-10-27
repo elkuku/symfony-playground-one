@@ -168,12 +168,9 @@ class UserAdminCommand extends Command
 
     private function createUser(): void
     {
-        $identifier = $this->askIdentifier();
-        $role = $this->askRole();
-
         $user = (new User())
-            ->setUserIdentifier($identifier)
-            ->setRole($role);
+            ->setUserIdentifier($this->askIdentifier())
+            ->setRole($this->askRole());
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
@@ -186,9 +183,11 @@ class UserAdminCommand extends Command
             $this->output,
             new Question('User ID to delete: ')
         );
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(
-            ['id' => $id]
-        );
+        $user = $this->entityManager
+            ->getRepository(User::class)
+            ->findOneBy(
+                ['id' => $id]
+            );
 
         if (!$user) {
             throw new UnexpectedValueException('User not found!');
