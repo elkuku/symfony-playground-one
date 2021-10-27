@@ -2050,10 +2050,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "bootstrap-icons@npm:1.5.0"
-  checksum: c5c444ab07d8d1ae07f24a2e6dcd842cb6d9a39882da3d848f48f19dd6629bdc4eaea81f55ff7297a59a817b2bd3098b0434cc50415ef3a2e7e939a59c2133ce
+"bootstrap-icons@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "bootstrap-icons@npm:1.6.1"
+  checksum: 83dd36f2c760f85fce6b8c5f3ae2b51b8fb4e0697e783631d51fdc5183ec20479aae3c99da01e468fc27f23752efd737d320a9d47971f4feacb47ee01ee448c7
   languageName: node
   linkType: hard
 
@@ -2066,10 +2066,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootswatch@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "bootswatch@npm:5.1.2"
-  checksum: 35c13bafe915fce7bb15795ca6c5c35e35f932e325b1c03b78f01e12875940b321c399fe2da08926fb74fcd377aada557f57be3552ad8be4f0440589e7139d4e
+"bootswatch@npm:^5.1.3":
+  version: 5.1.3
+  resolution: "bootswatch@npm:5.1.3"
+  checksum: 1a3885c7078127f3c0107f99ddfe4f3404eb55857dedb763da8988d6fbd66243cfb26b40c0f76475349157c8a3d05b9acb0a224aa4f984b6cb76a4dd33d72c97
   languageName: node
   linkType: hard
 
@@ -2530,10 +2530,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.18.3":
-  version: 3.18.3
-  resolution: "core-js@npm:3.18.3"
-  checksum: 01a927d02974a95313bc2325d9f832bbb4801c0c7e69639392574799f87041ce3dae52bdee3646c7cd58b4f38750a6093ca05363bf9f772be9c38dc69608c25c
+"core-js@npm:^3.19.0":
+  version: 3.19.0
+  resolution: "core-js@npm:3.19.0"
+  checksum: 2e9352f7794e555c377a61c7d9c007a7f66ce11ee0f1a26c1cfb48ff52885a2c162972c026eb32cbbfbb3be4050701f649e78ea8c44d4ac659d447a9dbc5f0de
   languageName: node
   linkType: hard
 
@@ -6180,9 +6180,9 @@ fsevents@~2.3.2:
     "@symfony/stimulus-bridge": ^2.1.0
     "@symfony/webpack-encore": ^1.6.1
     bootstrap: ^5.1.3
-    bootstrap-icons: ^1.5.0
-    bootswatch: ^5.1.2
-    core-js: ^3.18.3
+    bootstrap-icons: ^1.6.1
+    bootswatch: ^5.1.3
+    core-js: ^3.19.0
     file-loader: ^6.2.0
     hotkeys-js: ^3.8.7
     jquery: ^3.6.0
@@ -6190,7 +6190,7 @@ fsevents@~2.3.2:
     regenerator-runtime: ^0.13.9
     stimulus: ^2.0.0
     stimulus-use: ^0.41.0
-    sweetalert2: ^11.1.7
+    sweetalert2: ^11.1.9
     webpack-notifier: ^1.14.1
   languageName: unknown
   linkType: soft
@@ -6756,10 +6756,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"sweetalert2@npm:^11.1.7":
-  version: 11.1.7
-  resolution: "sweetalert2@npm:11.1.7"
-  checksum: 78ea316596991e8dcf0e8eedb6101a6e252c03f2b001ba95ea1a299e1abe8c95bda42ee48e1fe96e5478fd23fd25694d8f65ea45e9e3879fb8081bb154b1c78f
+"sweetalert2@npm:^11.1.9":
+  version: 11.1.9
+  resolution: "sweetalert2@npm:11.1.9"
+  checksum: b7519c739a2b25ad09d42e90c8fceeb90ca87487f77c47fb35eb457260efb0df544f2acf48ad6caf6a5084a53690e8ad33e3d1c2b7e0cdf4897cd14bd349b2aa
   languageName: node
   linkType: hard
 
