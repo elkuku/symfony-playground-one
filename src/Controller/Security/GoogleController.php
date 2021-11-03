@@ -35,6 +35,6 @@ class GoogleController extends AbstractController
     #[Route(path: '/connect/google/check', name: 'connect_google_check', methods: ['GET'])]
     public function connectCheckAction(): RedirectResponse
     {
-        return $this->redirectToRoute('welcome');
+        return $this->redirectToRoute('default');
     }
 }

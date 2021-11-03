@@ -33,7 +33,7 @@ class GoogleAuthenticator extends AbstractAuthenticator
 
     public function supports(Request $request): bool
     {
-        return $request->attributes->get('_route') === 'connect_google_check';
+        return $request->getPathInfo() === '/connect/google/check';
     }
 
     /**

@@ -33,7 +33,7 @@ class GitHubAuthenticator extends AbstractAuthenticator
 
     public function supports(Request $request): bool
     {
-        return $request->attributes->get('_route') === 'connect_github_check';
+        return $request->getPathInfo() === '/connect/check/github';
     }
 
     /**
