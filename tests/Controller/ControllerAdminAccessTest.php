@@ -47,7 +47,7 @@ class ControllerAdminAccessTest extends WebTestCase
         $client = static::createClient();
 
         $user = static::getContainer()->get(UserRepository::class)
-            ->findOneByIdentifier('admin@example.com');
+            ->findOneByIdentifier('admin');
 
         $routeLoader = static::getContainer()
             ->get('routing.loader');

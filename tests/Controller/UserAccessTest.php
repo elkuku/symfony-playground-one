@@ -18,13 +18,13 @@ class UserAccessTest extends WebTestCase
 
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $user = $userRepository->findOneByIdentifier('user@example.com');
+        $user = $userRepository->findOneByIdentifier('user');
 
         $client->loginUser($user);
 
         $client->request('GET', '/');
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h4', 'Welcome user@example.com');
+        self::assertSelectorTextContains('h4', 'Welcome user');
     }
 }
