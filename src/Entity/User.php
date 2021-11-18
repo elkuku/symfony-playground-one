@@ -2,17 +2,17 @@
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\Table(name="system_user")
- * @UniqueEntity(fields="identifier", message="This identifier is already in use")
- */
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: 'system_user')]
+#[UniqueEntity(fields: 'identifier', message: 'This identifier is already in use')]
 class User implements UserInterface, Serializable
 {
     public const ROLES
@@ -21,32 +21,21 @@ class User implements UserInterface, Serializable
             'admin' => 'ROLE_ADMIN',
         ];
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id, ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = 0;
 
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank
-     */
+    #[ORM\Column(type: Types::STRING, length: 255, unique: true)]
+    #[Assert\NotBlank]
     private ?string $identifier = '';
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
+    #[ORM\Column(type: Types::STRING, length: 50)]
     private ?string $role = 'ROLE_USER';
 
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
+    #[ORM\Column(type: Types::STRING, length: 100, nullable: true)]
     private ?string $googleId = '';
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $gitHubId = '';
 
     public function eraseCredentials(): void
