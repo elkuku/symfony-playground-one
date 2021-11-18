@@ -21,12 +21,13 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+#  - psql -c 'create database travis_ci_test;' -U postgres
   - cp .env.travis .env
   - composer install
   - nvm install 12
   - yarn install
   - yarn dev
+  - bin/console doctrine:database:create -n
   - bin/console doctrine:migrations:migrate -n
   - bin/console doctrine:fixtures:load -n
 
