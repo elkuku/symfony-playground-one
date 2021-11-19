@@ -21,7 +21,6 @@ services:
   - postgresql
 
 before_script:
-#  - psql -c 'create database travis_ci_test;' -U postgres
   - cp .env.travis .env
   - composer install
   - nvm install 12
@@ -33,7 +32,6 @@ before_script:
 
 script:
   - SYMFONY_DEPRECATIONS_HELPER=disabled ./bin/phpunit $PHPUNIT_FLAGS
-#  - make tests
 #  - cat ./var/log/test.log
 
 #after_script:
