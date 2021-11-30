@@ -8,7 +8,7 @@
 ## What's this??
 An opinionated [Symfony](https://symfony.com) project template including:
 
-* Symfony 5.*
+* Symfony 6.*
 * Docker compose file for PostgreSQL
 * `dev` login form <br/> `prod` Social login with Google or GitHub (and [more](https://github.com/knpuniversity/oauth2-client-bundle#step-1-download-the-client-library))
 * JQuery, Bootstrap and [Bootswatch](https://bootswatch.com/)
