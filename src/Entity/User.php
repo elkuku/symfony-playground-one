@@ -64,7 +64,7 @@ class User implements UserInterface, Serializable
         return $this->id;
     }
 
-    public function getUserIdentifier(): ?string
+    public function getUserIdentifier(): string
     {
         return $this->identifier;
     }
