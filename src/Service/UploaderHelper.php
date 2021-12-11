@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Gedmo\Sluggable\Util\Urlizer;
+use League\Flysystem\Filesystem;
 use Symfony\Component\Asset\Context\RequestStackContext;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -11,7 +12,7 @@ class UploaderHelper
     public const STORE_IMAGES_PATH = 'store_images';
 
     public function __construct(
-        private string $uploadsPath,
+        private Filesystem $publicUploadsFilesystem,
         private RequestStackContext $requestStackContext
     ) {
     }
@@ -22,19 +23,23 @@ class UploaderHelper
                 ->getBasePath().'/uploads/'.$path;
     }
 
-    public function uploadStoreImage(UploadedFile $uploadedFile): string
+    /**
+     * @throws \League\Flysystem\FilesystemException
+     */
+    public function uploadStoreImage(UploadedFile $file): string
     {
-        $destination = $this->uploadsPath.'/'.self::STORE_IMAGES_PATH;
-
         $originalFilename = pathinfo(
-            $uploadedFile->getClientOriginalName(),
+            $file->getClientOriginalName(),
             PATHINFO_FILENAME
         );
-        $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'
-            .$uploadedFile->guessExtension();
-        $uploadedFile->move(
-            $destination,
-            $newFilename
+
+        $newFilename = Urlizer::urlize($originalFilename)
+            .'-'.uniqid('', true)
+            .'.'.$file->guessExtension();
+
+        $this->publicUploadsFilesystem->write(
+            self::STORE_IMAGES_PATH.'/'.$newFilename,
+            file_get_contents($file->getPathname())
         );
 
         return $newFilename;
