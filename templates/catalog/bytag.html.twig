@@ -9,7 +9,7 @@
         {% for store in tag.stores %}
             <h2>
                 <a href="{{ path('app_catalog_store', {'name': store.name}) }}">
-                    <img class="store-img" src="{{ uploaded_asset(store.imagePath)|imagine_filter('squared_thumbnail_mini') }}">
+                    <img class="store-img" src="{{ store.imagePath|imagine_filter('squared_thumbnail_mini') }}">
                     {{ store.name }}
                 </a>
             </h2>

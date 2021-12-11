@@ -5,6 +5,8 @@
 {% block body %}
     <h1>Store</h1>
 
+    <img src="{{ uploaded_asset(store.imagePath) }}" alt="logo" width="200px">
+
     <table class="table">
         <tbody>
             <tr>
@@ -15,9 +17,12 @@
                 <th>Name</th>
                 <td>{{ store.name }}</td>
             </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ store.imageFilename }}</td>
+            </tr>
         </tbody>
     </table>
-
     <a href="{{ path('store_index') }}">back to list</a>
 
     <a href="{{ path('store_edit', {'id': store.id}) }}">edit</a>

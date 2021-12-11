@@ -7,7 +7,6 @@ use App\Form\StoreType;
 use App\Repository\StoreRepository;
 use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
-use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,7 +38,7 @@ class StoreController extends AbstractController
             /** @var UploadedFile $uploadedFile */
             $uploadedFile = $form['imageFile']->getData();
             if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadStoreImage($uploadedFile);
+                $newFilename = $uploaderHelper->uploadStoreImage($uploadedFile, $store->getImageFilename());
                 $store->setImageFilename($newFilename);
             }
 
@@ -80,7 +79,7 @@ class StoreController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $uploadedFile = $form['imageFile']->getData();
             if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadStoreImage($uploadedFile);
+                $newFilename = $uploaderHelper->uploadStoreImage($uploadedFile, $store->getImageFilename());
                 $store->setImageFilename($newFilename);
             }
 

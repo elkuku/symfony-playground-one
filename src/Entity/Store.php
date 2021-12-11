@@ -25,9 +25,18 @@ class Store
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $imageFilename;
 
+    #[ORM\OneToMany(mappedBy: 'store', targetEntity: StoreReference::class)]
+    private $storeReferences;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->storeReferences = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -87,4 +96,34 @@ class Store
     {
         return UploaderHelper::STORE_IMAGES_PATH.'/'.$this->getImageFilename();
     }
+
+    /**
+     * @return Collection|StoreReference[]
+     */
+    public function getStoreReferences(): Collection
+    {
+        return $this->storeReferences;
+    }
+
+    // public function addStoreReference(StoreReference $storeReference): self
+    // {
+    //     if (!$this->storeReferences->contains($storeReference)) {
+    //         $this->storeReferences[] = $storeReference;
+    //         $storeReference->setStore($this);
+    //     }
+    //
+    //     return $this;
+    // }
+    //
+    // public function removeStoreReference(StoreReference $storeReference): self
+    // {
+    //     if ($this->storeReferences->removeElement($storeReference)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($storeReference->getStore() === $this) {
+    //             $storeReference->setStore(null);
+    //         }
+    //     }
+    //
+    //     return $this;
+    // }
 }

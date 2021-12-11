@@ -53,12 +53,12 @@ class AppFixtures extends Fixture
         $store1 = (new Store())
             ->setName('KFC')
             ->setImageFilename($logo1)
+            ->addTag($tag1)
             ->addTag($tag2);
 
         $store2 = (new Store())
             ->setName('Santas Alitas')
             ->setImageFilename($logo2)
-            ->addTag($tag1)
             ->addTag($tag2);
 
         $manager->persist($store1);
