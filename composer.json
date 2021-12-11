@@ -13,9 +13,11 @@
         "doctrine/doctrine-bundle": "^2.1",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
+        "gedmo/doctrine-extensions": "^3.4",
         "knpuniversity/oauth2-client-bundle": "^2.3",
         "league/oauth2-github": "^3.0",
         "league/oauth2-google": "^4.0",
+        "liip/imagine-bundle": "^2.7",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.0",
         "symfony/apache-pack": "^1.0",
@@ -111,7 +113,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "6.*"
+            "require": "5.*"
         }
     }
 }

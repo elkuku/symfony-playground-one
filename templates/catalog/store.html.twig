@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ store.name }}
+{% endblock %}
+
+{% block body %}
+<h1>{{ store.name }}</h1>
+    <img class="show-store-img" src="{{ uploaded_asset(store.imagePath)|imagine_filter('squared_thumbnail_medium') }}">
+
+{% endblock %}
+
+

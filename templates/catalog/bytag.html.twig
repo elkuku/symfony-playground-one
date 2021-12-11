@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+    <h1>{{ tag.name }}</h1>
+    <div class="example-wrapper">
+
+        {% for store in tag.stores %}
+            <h2><a href="{{ path('app_catalog_store', {'name': store.name}) }}">{{ store.name }}</a></h2>
+            <img class="store-img" src="{{ uploaded_asset(store.imagePath) }}">
+
+            <img class="store-img" src="{{ uploaded_asset(store.imagePath)|imagine_filter('squared_thumbnail_small') }}">
+            <img class="store-img" src="{{ uploaded_asset(store.imagePath)|imagine_filter('squared_thumbnail_mini') }}">
+            {#            <a href="{{ path('app_catalog_by_tag', {'id': tag.id}) }}">{{ tag.name }}</a>#}
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
