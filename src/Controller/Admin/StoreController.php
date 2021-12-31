@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Store;
+use App\Form\ReferenceType;
 use App\Form\StoreType;
 use App\Repository\StoreRepository;
 use App\Service\UploaderHelper;
@@ -74,6 +75,7 @@ class StoreController extends AbstractController
         UploaderHelper $uploaderHelper
     ): Response {
         $form = $this->createForm(StoreType::class, $store);
+        $referenceForm = $this->createForm(ReferenceType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -95,6 +97,7 @@ class StoreController extends AbstractController
         return $this->renderForm('store/edit.html.twig', [
             'store' => $store,
             'form'  => $form,
+            'referenceForm' => $referenceForm,
         ]);
     }
 

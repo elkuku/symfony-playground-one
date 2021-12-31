@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\StoreReferenceRepository;
 use App\Service\UploaderHelper;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: StoreReferenceRepository::class)]
 class StoreReference
@@ -12,6 +14,7 @@ class StoreReference
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups('main')]
     private $id;
 
     #[ORM\ManyToOne(targetEntity: Store::class, inversedBy: 'storeReferences')]
@@ -19,13 +22,22 @@ class StoreReference
     private Store $store;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups('main')]
     private $filename;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['main', 'input'])]
+// * @Assert\NotBlank()
+// * @Assert\Length(max=100)
+    #[NotBlank()]
     private $originalFilename;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups('main')]
     private $mimeType;
+
+    #[ORM\Column(type: 'integer')]
+    private int $position = 0;
 
     public function __construct(Store $store)
     {
@@ -41,13 +53,6 @@ class StoreReference
     {
         return $this->store;
     }
-
-    // public function setStore(?Store $store): self
-    // {
-    //     $this->store = $store;
-    //
-    //     return $this;
-    // }
 
     public function getFilename(): ?string
     {
@@ -88,5 +93,17 @@ class StoreReference
     public function getFilePath(): string
     {
         return UploaderHelper::STORE_REFERENCE.'/'.$this->getFilename();
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): self
+    {
+        $this->position = $position;
+
+        return $this;
     }
 }

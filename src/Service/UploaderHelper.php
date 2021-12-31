@@ -4,6 +4,7 @@ namespace App\Service;
 
 use Gedmo\Sluggable\Util\Urlizer;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemException;
 use Symfony\Component\Asset\Context\RequestStackContext;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -44,7 +45,7 @@ class UploaderHelper
 
     public function uploadStoreReference(File $file): string
     {
-        return $this->uploadFile($file, self::STORE_REFERENCE, false);
+        return $this->uploadFile($file, self::STORE_REFERENCE, true);
     }
 
     private function uploadFile(File $file, string $directory, bool $isPublic): string
@@ -87,5 +88,16 @@ class UploaderHelper
         }
 
         return $resource;
+    }
+
+    public function deleteFile(string $path, bool $isPublic)
+    {
+        $filesystem = $isPublic ? $this->publicUploadsFilesystem : $this->privateUploadsFilesystem;
+
+        try {
+            $filesystem->delete($path);
+        } catch (FilesystemException $e) {
+            throw new \Exception(sprintf('Error deleting "%s"', $path));
+        }
     }
 }

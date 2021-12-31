@@ -7,6 +7,12 @@
 {% block body %}
 <h1>{{ store.name }}</h1>
     <img class="show-store-img" src="{{ store.imagePath|imagine_filter('squared_thumbnail_medium') }}">
+{#    {{ dump(store) }}#}
+
+    {% for reference in store.storeReferences %}
+{#    {{ dump(reference) }}#}
+        <img class="show-store-img" src="{{ reference.filePath|imagine_filter('squared_thumbnail_mini') }}">
+    {% endfor %}
 
 {% endblock %}
 

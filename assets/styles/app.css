@@ -43,3 +43,10 @@ form.form-nomargin {
     width: 95%;
 }
 
+/* Sortable */
+.sortable-ghost {
+    background-color: lightblue;
+}
+.drag-handle {
+    cursor: grab;
+}

@@ -7,6 +7,7 @@ use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OrderBy;
 
 #[ORM\Entity(repositoryClass: StoreRepository::class)]
 class Store
@@ -26,6 +27,7 @@ class Store
     private $imageFilename;
 
     #[ORM\OneToMany(mappedBy: 'store', targetEntity: StoreReference::class)]
+    #[OrderBy(['position' => 'ASC'])]
     private $storeReferences;
 
     public function __construct()
