@@ -1148,6 +1148,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/stimulus-webpack-helpers@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@hotwired/stimulus-webpack-helpers@npm:1.0.1"
+  peerDependencies:
+    "@hotwired/stimulus": ">= 3.0"
+  checksum: 4241f935dd43f128dc84c33bba334d50894de52022d292f16e80cf1c05fa80c92f92200d03a65b10bc8c1c8b4a20758ca705ee24cca29b9478a8fa17f3932859
+  languageName: node
+  linkType: hard
+
+"@hotwired/stimulus@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@hotwired/stimulus@npm:3.0.1"
+  checksum: 2c7a36dedb4935aa31924d0b467e5376ba16d18834c36f3199c447b7e2131d9c40fb9b4428d37354fe7c2c19969b32cde0fa08dc0e885c9ad776ed81172cf5e1
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.4":
   version: 2.1.4
   resolution: "@nodelib/fs.scandir@npm:2.1.4"
@@ -1189,61 +1205,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.10.2":
-  version: 2.10.2
-  resolution: "@popperjs/core@npm:2.10.2"
-  checksum: d69c58952226672372d509a63cc0d891ab6b2aed8029cd91217c83476939d2004fcb5ecbd6068b4aa99ee5d80364a9b1cb6f92921b0dc3b0c450e8c92bf3ba3d
+"@popperjs/core@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "@popperjs/core@npm:2.11.0"
+  checksum: 4c33b4f83f84df67e9b26761c0ae8ebd9cfd0b17c964cedda35519d186bf9cf360a286964c3d5e297e51d24210dc03e7bfab0f575fe342f07b6ca680ef073d78
   languageName: node
   linkType: hard
 
-"@stimulus/core@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/core@npm:2.0.0"
+"@symfony/stimulus-bridge@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@symfony/stimulus-bridge@npm:3.0.0"
   dependencies:
-    "@stimulus/mutation-observers": ^2.0.0
-  checksum: b06659e55ea456e9624eb233d090a97b8ae24becb5bca6c8405a490899dc69141d7943d8eae066fa71f117395a348c35b1a407070654cdd03cf4d4afb1e9618b
-  languageName: node
-  linkType: hard
-
-"@stimulus/multimap@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/multimap@npm:2.0.0"
-  checksum: 99b1a429764a586f9ef329a52b6f9c0f5d4710540c37b8fbd41c8b093335eab113a616b08ba8678965847ac70e8b552109187e2a5bb60493bdcd93879cc3837d
-  languageName: node
-  linkType: hard
-
-"@stimulus/mutation-observers@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/mutation-observers@npm:2.0.0"
-  dependencies:
-    "@stimulus/multimap": ^2.0.0
-  checksum: 577ea4d03d9cdcae31cc4ec47ab84cea936f05651772578663804aa6c9c72b077535e5c2e55ee097225ac42539a3640b568af84266387822559afc9360b67ae4
-  languageName: node
-  linkType: hard
-
-"@stimulus/webpack-helpers@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/webpack-helpers@npm:2.0.0"
-  checksum: 5298a20b1e18168a424e7ac894509f0d15ab762233abf2000e89769a6c9b087371fdc224e5c9edc5d236bd703ac147c022e04e3bf961675c47df37d64528aead
-  languageName: node
-  linkType: hard
-
-"@symfony/stimulus-bridge@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@symfony/stimulus-bridge@npm:2.1.0"
-  dependencies:
+    "@hotwired/stimulus-webpack-helpers": ^1.0.1
     acorn: ^8.0.5
     loader-utils: ^2.0.0
     schema-utils: ^3.0.0
   peerDependencies:
-    stimulus: ^2.0
-  checksum: 3d34c1c88ebda916f855eee93fb51446fea056f1846702878e3a886e4ef83e4a07573d80971d6fdb72e41ebfd801840fed064042fe2eef1f407224d3b2bce386
+    "@hotwired/stimulus": ^3.0
+  checksum: 7faa13757c08accc2b931b2dce5979d4c3e8b328b98fd4a2bdcd53f32ae6d69646f8268336814451b889eff190959e37200ebdb09433a3a3330deca71286d508
   languageName: node
   linkType: hard
 
-"@symfony/webpack-encore@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@symfony/webpack-encore@npm:1.6.1"
+"@symfony/webpack-encore@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@symfony/webpack-encore@npm:1.7.0"
   dependencies:
     "@babel/core": ^7.7.0
     "@babel/plugin-syntax-dynamic-import": ^7.0.0
@@ -1271,7 +1256,7 @@ __metadata:
     yargs-parser: ^20.2.4
   bin:
     encore: bin/encore.js
-  checksum: 3d0ab32c4dc4fec25c40bb9cd74b108b674c1bd14c105cb16c51d0ace947192ba232df18d93a39d04aee737ac221ab61ceb10e9c6e12d04ddc6c5d4554f626a9
+  checksum: b6a776ce854281cd82edc019dfe0e8262eb09f4fec3a85a46b13b28c432c312390dfd5532f8131aa10cd64bcd81079499d565c31ba436821c926b46dd2d0cc7b
   languageName: node
   linkType: hard
 
@@ -2050,10 +2035,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:^1.7.1":
-  version: 1.7.1
-  resolution: "bootstrap-icons@npm:1.7.1"
-  checksum: 58bb9ec0d051fabb028fa8ad1992cf78c1fcdf7e12662f6976231c268adeef130cb743a873d58202af0751331b568d792690f879ad4f2bebbb6b9d1963d6c4c7
+"bootstrap-icons@npm:^1.7.2":
+  version: 1.7.2
+  resolution: "bootstrap-icons@npm:1.7.2"
+  checksum: 184e6d8d6699f82b88e0ad0e38f070b35c42bbac29868c5790b0a76d561876deea95e03fe239a439656f37e01a1fe48a4cdd65975fcd0be384725eaf2ed71e68
   languageName: node
   linkType: hard
 
@@ -2530,10 +2515,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.19.1":
-  version: 3.19.1
-  resolution: "core-js@npm:3.19.1"
-  checksum: 32b2ecead4b19f134b4c385271a0dd99f089ef90896d73a3b554b27832d1b56fc7ffaa5a8b396b670ef43c332b9a5522ccd9d1172189dcd911bbe5c08077d0d5
+"core-js@npm:^3.20.1":
+  version: 3.20.1
+  resolution: "core-js@npm:3.20.1"
+  checksum: b1c9c664605fd0375380cf18535c6bda2a4d4f7cfcb191b42cf3ac9cbde4a01d98ebb20e2edc81510d01c934dc38f84a35997bbd36a28a396eae9d76c820c126
   languageName: node
   linkType: hard
 
@@ -6176,22 +6161,22 @@ fsevents@~2.3.2:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@popperjs/core": ^2.10.2
-    "@symfony/stimulus-bridge": ^2.1.0
-    "@symfony/webpack-encore": ^1.6.1
+    "@hotwired/stimulus": ^3.0.1
+    "@popperjs/core": ^2.11.0
+    "@symfony/stimulus-bridge": ^3.0.0
+    "@symfony/webpack-encore": ^1.7.0
     bootstrap: ^5.1.3
-    bootstrap-icons: ^1.7.1
+    bootstrap-icons: ^1.7.2
     bootswatch: ^5.1.3
-    core-js: ^3.19.1
+    core-js: ^3.20.1
     file-loader: ^6.2.0
     hotkeys-js: ^3.8.7
     jquery: ^3.6.0
     open-iconic: ^1.1.1
     regenerator-runtime: ^0.13.9
-    stimulus: ^2.0.0
-    stimulus-use: ^0.41.0
-    sweetalert2: ^11.1.9
-    webpack-notifier: ^1.14.1
+    stimulus-use: beta
+    sweetalert2: ^11.3.2
+    webpack-notifier: ^1.15.0
   languageName: unknown
   linkType: soft
 
@@ -6585,24 +6570,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"stimulus-use@npm:^0.41.0":
-  version: 0.41.0
-  resolution: "stimulus-use@npm:0.41.0"
+"stimulus-use@npm:beta":
+  version: 0.50.0-2
+  resolution: "stimulus-use@npm:0.50.0-2"
   dependencies:
     hotkeys-js: ">=3"
   peerDependencies:
-    stimulus: ">=1.1.1 <3"
-  checksum: 155fa6908e47ec9ea106abd7e85176257de48fa696d795295b57a2b26f8f2915f83692e6e038f1509de299f42b2d0eea482c56ca4ecc2848e73b008c8a463b16
-  languageName: node
-  linkType: hard
-
-"stimulus@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "stimulus@npm:2.0.0"
-  dependencies:
-    "@stimulus/core": ^2.0.0
-    "@stimulus/webpack-helpers": ^2.0.0
-  checksum: 30e9a874b4ff4285664ca0c3bba579819c67b6546ee08c513b134c00d7907d15da6cc71c038a27081251506e8a88e81149bcef000d5e883e0737c5fe0aaa0fe3
+    "@hotwired/stimulus": ">=3"
+    stimulus: ">=3"
+  checksum: 96b7348c665433a0e50be8fe5a719db6f6c122e2225c251c55bbc3350a1669e7843b8141a5b94ae78d705f9e5f286c8a5178e76bd879afcd5b726b0101767dae
   languageName: node
   linkType: hard
 
@@ -6756,10 +6732,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"sweetalert2@npm:^11.1.9":
-  version: 11.1.9
-  resolution: "sweetalert2@npm:11.1.9"
-  checksum: b7519c739a2b25ad09d42e90c8fceeb90ca87487f77c47fb35eb457260efb0df544f2acf48ad6caf6a5084a53690e8ad33e3d1c2b7e0cdf4897cd14bd349b2aa
+"sweetalert2@npm:^11.3.2":
+  version: 11.3.2
+  resolution: "sweetalert2@npm:11.3.2"
+  checksum: 626c31f15d095fd43a7a420fea5692ea143c6dbb8231cee46850d07863f09ca8dd5353c578139452b385e74df250ea87008efbeb398f8688d71a6ea34b10643c
   languageName: node
   linkType: hard
 
@@ -7186,18 +7162,18 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"webpack-notifier@npm:^1.14.1":
-  version: 1.14.1
-  resolution: "webpack-notifier@npm:1.14.1"
+"webpack-notifier@npm:^1.15.0":
+  version: 1.15.0
+  resolution: "webpack-notifier@npm:1.15.0"
   dependencies:
     node-notifier: ^9.0.0
     strip-ansi: ^6.0.0
   peerDependencies:
-    "@types/webpack": ^4.41.31
+    "@types/webpack": ">4.41.31"
   peerDependenciesMeta:
     "@types/webpack":
       optional: true
-  checksum: b73a77799957f9fc6335bb781a6b23dc8b5ca83f74d87a827dcc88cffa069d69d18d1818844f06159728aea433f76bfd822a8990eeca477e0fa8bada3df57f91
+  checksum: afc3b3604780ff711be3e4921cc6879c01b8f2463b8f4b28b220dc6362d93a33df8125b4f4e534ef456bff88bde56a8a7118d105de5587245da88bcc6574554a
   languageName: node
   linkType: hard
 

@@ -1,4 +1,4 @@
-import {Controller} from 'stimulus'
+import {Controller} from '@hotwired/stimulus'
 import $ from 'jquery'
 import {Modal} from 'bootstrap'
 import {useDispatch} from 'stimulus-use'
