@@ -3,12 +3,33 @@
 namespace App\Twig;
 
 use App\Entity\User;
+use App\Service\UploaderHelper;
 use JetBrains\PhpStorm\Pure;
+use Psr\Container\ContainerInterface;
+use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-class AppExtension extends AbstractExtension
+class AppExtension extends AbstractExtension implements ServiceSubscriberInterface
 {
+    public function __construct(private ContainerInterface $container)
+    {
+    // public function __construct(private UploaderHelper $uploaderHelper)
+    // {
+    }
+
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('uploaded_asset', [
+                $this,
+                'getUploadedAssetPath',
+                0,
+            ]),
+        ];
+    }
+
     public function getFilters(): array
     {
         return [
@@ -21,5 +42,22 @@ class AppExtension extends AbstractExtension
         $value
     ): string {
         return array_search($value, User::ROLES, true);
+    }
+
+    public function getUploadedAssetPath(string $path): string
+    {
+        return $this->container
+            ->get(UploaderHelper::class)
+            ->getPublicPath($path);
+
+        return $this->uploaderHelper
+            ->getPublicPath($path);
+    }
+
+    public static function getSubscribedServices(): array
+    {
+        return [
+            UploaderHelper::class,
+        ];
     }
 }
