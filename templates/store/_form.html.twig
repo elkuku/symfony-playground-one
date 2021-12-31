@@ -1,9 +1,0 @@
-{{ form_start(form) }}
-{% if form.vars.data.imageFilename %}
-    <a href="{{ uploaded_asset(form.vars.data.imagePath) }}" target="_blank">
-        <img src="{{ form.vars.data.imagePath|imagine_filter('squared_thumbnail_small') }}" height="100">
-    </a>
-{% endif %}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
