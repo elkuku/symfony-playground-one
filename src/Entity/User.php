@@ -21,7 +21,7 @@ class User implements UserInterface, Serializable
 {
     public const ROLES
         = [
-            'user'  => 'ROLE_USER',
+            'user' => 'ROLE_USER',
             'admin' => 'ROLE_ADMIN',
         ];
 

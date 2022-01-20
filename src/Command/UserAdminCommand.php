@@ -111,7 +111,9 @@ class UserAdminCommand extends Command
     private function renderUsersTable(): void
     {
         $table = new Table($this->output);
-        $table->setHeaders(['ID', 'Identifier', 'Role', 'GoogleId', 'GitHubId']);
+        $table->setHeaders(
+            ['ID', 'Identifier', 'Role', 'GoogleId', 'GitHubId']
+        );
 
         $users = $this->entityManager->getRepository(User::class)
             ->findBy([], ['id' => 'ASC']);

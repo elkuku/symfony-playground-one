@@ -21,9 +21,8 @@ class AppExtension extends AbstractExtension
     }
 
     #[Pure]
-    public function getRoleName(
-        $value
-    ): string {
+    public function getRoleName($value): string
+    {
         return array_search($value, User::ROLES, true);
     }
 }
