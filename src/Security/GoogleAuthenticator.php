@@ -5,8 +5,8 @@ namespace App\Security;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,33 +54,9 @@ class GoogleAuthenticator extends AbstractAuthenticator
         );
     }
 
-    public function onAuthenticationSuccess(
-        Request $request,
-        TokenInterface $token,
-        string $firewallName
-    ): RedirectResponse {
-        if ($targetPath = $this->getTargetPath(
-            $request->getSession(),
-            $firewallName
-        )
-        ) {
-            return new RedirectResponse($targetPath);
-        }
-
-        return new RedirectResponse($this->urlGenerator->generate('default'));
-    }
-
-    public function onAuthenticationFailure(
-        Request $request,
-        AuthenticationException $exception
-    ): RedirectResponse {
-        $message = strtr(
-            $exception->getMessageKey(),
-            $exception->getMessageData()
-        );
-        $request->getSession()->getFlashBag()->add('danger', $message);
-
-        return new RedirectResponse($this->urlGenerator->generate('login'));
+    private function getGoogleClient(): OAuth2ClientInterface
+    {
+        return $this->clientRegistry->getClient('google');
     }
 
     private function getUser(GoogleUser $googleUser): User
@@ -113,8 +89,32 @@ class GoogleAuthenticator extends AbstractAuthenticator
         return $user;
     }
 
-    private function getGoogleClient(): OAuth2ClientInterface
-    {
-        return $this->clientRegistry->getClient('google');
+    public function onAuthenticationSuccess(
+        Request $request,
+        TokenInterface $token,
+        string $firewallName
+    ): RedirectResponse {
+        if ($targetPath = $this->getTargetPath(
+            $request->getSession(),
+            $firewallName
+        )
+        ) {
+            return new RedirectResponse($targetPath);
+        }
+
+        return new RedirectResponse($this->urlGenerator->generate('default'));
+    }
+
+    public function onAuthenticationFailure(
+        Request $request,
+        AuthenticationException $exception
+    ): RedirectResponse {
+        $message = strtr(
+            $exception->getMessageKey(),
+            $exception->getMessageData()
+        );
+        $request->getSession()->getFlashBag()->add('danger', $message);
+
+        return new RedirectResponse($this->urlGenerator->generate('login'));
     }
 }

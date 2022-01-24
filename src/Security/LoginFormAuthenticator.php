@@ -32,11 +32,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             && $request->isMethod('POST');
     }
 
-    protected function getLoginUrl(Request $request): string
-    {
-        return $this->router->generate('login');
-    }
-
     public function authenticate(Request $request): Passport
     {
         if (false === in_array($this->appEnv, ['dev', 'test'])) {
@@ -49,6 +44,23 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             new UserBadge($credentials['identifier'] ?? ''),
             [new CsrfTokenBadge('login', $credentials['csrf_token'] ?? '')]
         );
+    }
+
+    #[ArrayShape(['identifier' => "string", 'csrf_token' => "string"])]
+    private function getCredentials(
+        Request $request
+    ): array {
+        $credentials = [
+            'identifier' => $request->request->get('identifier'),
+            'csrf_token' => $request->request->get('_csrf_token'),
+        ];
+
+        $request->getSession()->set(
+            Security::LAST_USERNAME,
+            $credentials['identifier']
+        );
+
+        return $credentials;
     }
 
     public function onAuthenticationSuccess(
@@ -67,20 +79,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         return new RedirectResponse($this->router->generate('default'));
     }
 
-    #[ArrayShape(['identifier' => "string", 'csrf_token' => "string"])]
-    private function getCredentials(
-        Request $request
-    ): array {
-        $credentials = [
-            'identifier' => $request->request->get('identifier'),
-            'csrf_token' => $request->request->get('_csrf_token'),
-        ];
-
-        $request->getSession()->set(
-            Security::LAST_USERNAME,
-            $credentials['identifier']
-        );
-
-        return $credentials;
+    protected function getLoginUrl(Request $request): string
+    {
+        return $this->router->generate('login');
     }
 }

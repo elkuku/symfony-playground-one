@@ -54,33 +54,9 @@ class GitHubAuthenticator extends AbstractAuthenticator
         );
     }
 
-    public function onAuthenticationSuccess(
-        Request $request,
-        TokenInterface $token,
-        string $firewallName
-    ): RedirectResponse {
-        if ($targetPath = $this->getTargetPath(
-            $request->getSession(),
-            $firewallName
-        )
-        ) {
-            return new RedirectResponse($targetPath);
-        }
-
-        return new RedirectResponse($this->urlGenerator->generate('default'));
-    }
-
-    public function onAuthenticationFailure(
-        Request $request,
-        AuthenticationException $exception
-    ): RedirectResponse {
-        $message = strtr(
-            $exception->getMessageKey(),
-            $exception->getMessageData()
-        );
-        $request->getSession()->getFlashBag()->add('danger', $message);
-
-        return new RedirectResponse($this->urlGenerator->generate('login'));
+    private function getClient(): OAuth2ClientInterface
+    {
+        return $this->clientRegistry->getClient('github');
     }
 
     private function getUser(GithubResourceOwner $resourceOwner): User
@@ -113,8 +89,32 @@ class GitHubAuthenticator extends AbstractAuthenticator
         return $user;
     }
 
-    private function getClient(): OAuth2ClientInterface
-    {
-        return $this->clientRegistry->getClient('github');
+    public function onAuthenticationSuccess(
+        Request $request,
+        TokenInterface $token,
+        string $firewallName
+    ): RedirectResponse {
+        if ($targetPath = $this->getTargetPath(
+            $request->getSession(),
+            $firewallName
+        )
+        ) {
+            return new RedirectResponse($targetPath);
+        }
+
+        return new RedirectResponse($this->urlGenerator->generate('default'));
+    }
+
+    public function onAuthenticationFailure(
+        Request $request,
+        AuthenticationException $exception
+    ): RedirectResponse {
+        $message = strtr(
+            $exception->getMessageKey(),
+            $exception->getMessageData()
+        );
+        $request->getSession()->getFlashBag()->add('danger', $message);
+
+        return new RedirectResponse($this->urlGenerator->generate('login'));
     }
 }

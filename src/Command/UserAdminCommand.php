@@ -108,36 +108,14 @@ class UserAdminCommand extends Command
         );
     }
 
-    private function renderUsersTable(): void
+    private function createUser(): void
     {
-        $table = new Table($this->output);
-        $table->setHeaders(
-            ['ID', 'Identifier', 'Role', 'GoogleId', 'GitHubId']
-        );
+        $user = (new User())
+            ->setUserIdentifier($this->askIdentifier())
+            ->setRole($this->askRole());
 
-        $users = $this->entityManager->getRepository(User::class)
-            ->findBy([], ['id' => 'ASC']);
-
-        $this->io->text(
-            sprintf(
-                '<fg=cyan>There are %d users in the database.</>',
-                count($users)
-            )
-        );
-
-        /* @type User $user */
-        foreach ($users as $user) {
-            $table->addRow(
-                [
-                    $user->getId(),
-                    $user->getUserIdentifier(),
-                    implode(', ', $user->getRoles()),
-                    $user->getGoogleId(),
-                    $user->getGitHubId(),
-                ]
-            );
-        }
-        $table->render();
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 
     private function askIdentifier(): string
@@ -170,14 +148,36 @@ class UserAdminCommand extends Command
         );
     }
 
-    private function createUser(): void
+    private function renderUsersTable(): void
     {
-        $user = (new User())
-            ->setUserIdentifier($this->askIdentifier())
-            ->setRole($this->askRole());
+        $table = new Table($this->output);
+        $table->setHeaders(
+            ['ID', 'Identifier', 'Role', 'GoogleId', 'GitHubId']
+        );
 
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
+        $users = $this->entityManager->getRepository(User::class)
+            ->findBy([], ['id' => 'ASC']);
+
+        $this->io->text(
+            sprintf(
+                '<fg=cyan>There are %d users in the database.</>',
+                count($users)
+            )
+        );
+
+        /* @type User $user */
+        foreach ($users as $user) {
+            $table->addRow(
+                [
+                    $user->getId(),
+                    $user->getUserIdentifier(),
+                    implode(', ', $user->getRoles()),
+                    $user->getGoogleId(),
+                    $user->getGitHubId(),
+                ]
+            );
+        }
+        $table->render();
     }
 
     private function deleteUser(): void
