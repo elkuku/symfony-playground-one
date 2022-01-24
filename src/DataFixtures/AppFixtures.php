@@ -2,13 +2,9 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Store;
-use App\Entity\Tag;
 use App\Entity\User;
-use App\Service\UploaderHelper;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\HttpFoundation\File\File;
 
 class AppFixtures extends Fixture
 {
