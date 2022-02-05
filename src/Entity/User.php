@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: 'identifier', message: 'This identifier is already in use')]
 class User implements UserInterface, Serializable
 {
-    public const ROLES
+    public final const ROLES
         = [
             'user' => 'ROLE_USER',
             'admin' => 'ROLE_ADMIN',
@@ -110,7 +110,7 @@ class User implements UserInterface, Serializable
             $this->id,
             $this->identifier,
         ]
-            = unserialize($data, ['allowed_classes' => [__CLASS__]]);
+            = unserialize($data, ['allowed_classes' => [self::class]]);
     }
 
     public function getGoogleId(): ?string

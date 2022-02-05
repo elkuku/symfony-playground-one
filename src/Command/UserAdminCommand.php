@@ -27,7 +27,7 @@ class UserAdminCommand extends Command
     private SymfonyStyle $io;
 
     public function __construct(
-        private EntityManagerInterface $entityManager,
+        private readonly EntityManagerInterface $entityManager,
     ) {
         parent::__construct();
     }
