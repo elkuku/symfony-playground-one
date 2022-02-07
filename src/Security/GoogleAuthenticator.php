@@ -51,7 +51,8 @@ class GoogleAuthenticator extends AbstractAuthenticator
         $user = $this->getUser($googleUser);
 
         return new SelfValidatingPassport(
-            new UserBadge($user->getUserIdentifier(), [new RememberMeBadge()]),
+            new UserBadge($user->getUserIdentifier()),
+            [new RememberMeBadge()],
         );
     }
 

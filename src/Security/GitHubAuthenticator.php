@@ -51,7 +51,8 @@ class GitHubAuthenticator extends AbstractAuthenticator
         $user = $this->getUser($githubResourceOwner);
 
         return new SelfValidatingPassport(
-            new UserBadge($user->getUserIdentifier(), [new RememberMeBadge()]),
+            new UserBadge($user->getUserIdentifier()),
+            [new RememberMeBadge()],
         );
     }
 
