@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
-use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -17,11 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[Entity(repositoryClass: UserRepository::class)]
 #[Table(name: 'system_user')]
 #[UniqueEntity(fields: 'identifier', message: 'This identifier is already in use')]
-class User implements UserInterface, Serializable
+class User implements UserInterface
 {
     public final const ROLES
         = [
-            'user' => 'ROLE_USER',
+            'user'  => 'ROLE_USER',
             'admin' => 'ROLE_ADMIN',
         ];
 
@@ -41,6 +40,20 @@ class User implements UserInterface, Serializable
 
     #[Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $gitHubId = '';
+
+    public function __serialize(): array
+    {
+        return [
+            'id'         => $this->id,
+            'identifier' => $this->identifier,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->id = $data['id'];
+        $this->identifier = $data['identifier'];
+    }
 
     public function eraseCredentials(): void
     {
@@ -80,37 +93,9 @@ class User implements UserInterface, Serializable
         return $this;
     }
 
-    public function getUsername(): ?string
-    {
-        return $this->identifier;
-    }
-
     public function getPassword(): ?string
     {
         return null;
-    }
-
-    public function getSalt(): void
-    {
-    }
-
-    public function serialize(): string
-    {
-        return serialize(
-            [
-                $this->id,
-                $this->identifier,
-            ]
-        );
-    }
-
-    public function unserialize($data): void
-    {
-        [
-            $this->id,
-            $this->identifier,
-        ]
-            = unserialize($data, ['allowed_classes' => [self::class]]);
     }
 
     public function getGoogleId(): ?string
