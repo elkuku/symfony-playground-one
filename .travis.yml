@@ -1,4 +1,5 @@
 language: php
+dist: bionic
 sudo: false
 cache:
   directories:
@@ -16,7 +17,9 @@ php:
 matrix:
   fast_finish: true
   allow_failures:
-    - php: nightly
+    - php:
+      - nightly
+      - master
 
 services:
   - postgresql
