@@ -2029,10 +2029,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:^1.8.0":
-  version: 1.8.0
-  resolution: "bootstrap-icons@npm:1.8.0"
-  checksum: b0953e27f5a618aaa61d71a91b26a0fcb3b7086cbdb7e893ec2a132157c45c60fb271a8db7de3761f7dc4ee01b11726aa737b9c06fc6b6df1c72b66a77950dd3
+"bootstrap-icons@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "bootstrap-icons@npm:1.8.1"
+  checksum: 99844d84abb720e8f98c746ef97498f5a80591ff0be3c641ab4aef61aec6c4c5c0192d619af59028263e58b08f884186c381a92475dd1be8fb8d545f59c119f2
   languageName: node
   linkType: hard
 
@@ -3817,7 +3817,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"hotkeys-js@npm:>=3, hotkeys-js@npm:^3.8.7":
+"hotkeys-js@npm:^3.8.7":
   version: 3.8.7
   resolution: "hotkeys-js@npm:3.8.7"
   checksum: 9f2bb7ccfedb7c9fdf209d12caa325062413e6fd0a59fb6f7e9a92bb30fdc8083ab26819586e81b18b0244385bbd14bfc69a7539b0e5ddb4eafbaace27a6a7ec
@@ -6165,7 +6165,7 @@ fsevents@~2.3.2:
     "@symfony/stimulus-bridge": ^3.0.0
     "@symfony/webpack-encore": ^1.8.1
     bootstrap: ^5.1.3
-    bootstrap-icons: ^1.8.0
+    bootstrap-icons: ^1.8.1
     bootswatch: ^5.1.3
     core-js: ^3.21.0
     file-loader: ^6.2.0
@@ -6173,8 +6173,6 @@ fsevents@~2.3.2:
     jquery: ^3.6.0
     open-iconic: ^1.1.1
     regenerator-runtime: ^0.13.9
-    stimulus-use: beta
-    sweetalert2: ^11.3.10
     webpack-notifier: ^1.15.0
   languageName: unknown
   linkType: soft
@@ -6569,18 +6567,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"stimulus-use@npm:beta":
-  version: 0.50.0-2
-  resolution: "stimulus-use@npm:0.50.0-2"
-  dependencies:
-    hotkeys-js: ">=3"
-  peerDependencies:
-    "@hotwired/stimulus": ">=3"
-    stimulus: ">=3"
-  checksum: 96b7348c665433a0e50be8fe5a719db6f6c122e2225c251c55bbc3350a1669e7843b8141a5b94ae78d705f9e5f286c8a5178e76bd879afcd5b726b0101767dae
-  languageName: node
-  linkType: hard
-
 "string-width@npm:^1.0.1":
   version: 1.0.2
   resolution: "string-width@npm:1.0.2"
@@ -6728,13 +6714,6 @@ fsevents@~2.3.2:
   bin:
     svgo: bin/svgo
   checksum: 8580eddbab54079813531f9fd8c246662eea6f3f7554d7a6082dce010c25b4a8e8e92ae4ee52b2c80b514abc54ecd0e2bd1ef3011693d5daf473adefc5b48180
-  languageName: node
-  linkType: hard
-
-"sweetalert2@npm:^11.3.10":
-  version: 11.3.10
-  resolution: "sweetalert2@npm:11.3.10"
-  checksum: 5d6f80a09d379bd08f1339796ac1c0e14a186bec4855963cfc05e925ce5d313a9461db7f8abc68a7d042d92cd9b9155973082c067dc08001e36b33051a73bd4e
   languageName: node
   linkType: hard
 

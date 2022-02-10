@@ -17,6 +17,15 @@ class AppExtension extends AbstractExtension
 
     public function getRoleName($value): string
     {
+        if (is_array($value)) {
+            $roles = [];
+            foreach ($value as $item) {
+                $roles[] = array_search($item, User::ROLES, true);
+            }
+
+            return implode(', ', $roles);
+        }
+
         return array_search($value, User::ROLES, true);
     }
 }

@@ -111,8 +111,8 @@ class UserAdminCommand extends Command
     private function createUser(): void
     {
         $user = (new User())
-            ->setUserIdentifier($this->askIdentifier())
-            ->setRole($this->askRole());
+            ->setIdentifier($this->askIdentifier())
+            ->setRoles([$this->askRole()]);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
@@ -152,7 +152,7 @@ class UserAdminCommand extends Command
     {
         $table = new Table($this->output);
         $table->setHeaders(
-            ['ID', 'Identifier', 'Role', 'GoogleId', 'GitHubId']
+            ['ID', 'Identifier', 'Roles', 'GoogleId', 'GitHubId']
         );
 
         $users = $this->entityManager->getRepository(User::class)

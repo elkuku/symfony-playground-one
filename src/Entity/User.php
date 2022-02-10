@@ -32,8 +32,8 @@ class User implements UserInterface
     #[Assert\NotBlank]
     private ?string $identifier = '';
 
-    #[Column(type: Types::STRING, length: 50)]
-    private ?string $role = 'ROLE_USER';
+    #[Column(type: Types::JSON)]
+    private array $roles = [];
 
     #[Column(type: Types::STRING, length: 100, nullable: true)]
     private ?string $googleId = '';
@@ -61,17 +61,17 @@ class User implements UserInterface
 
     public function getRoles(): array
     {
-        return [$this->getRole()];
+        $roles = $this->roles;
+
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function getRole(): ?string
+    public function setRoles(array $roles): self
     {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -81,12 +81,17 @@ class User implements UserInterface
         return $this->id;
     }
 
+    public function getIdentifier(): string
+    {
+        return $this->identifier;
+    }
+
     public function getUserIdentifier(): string
     {
         return $this->identifier;
     }
 
-    public function setUserIdentifier(?string $identifier): self
+    public function setIdentifier(?string $identifier): self
     {
         $this->identifier = $identifier;
 
