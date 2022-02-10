@@ -9,7 +9,7 @@ env:
     - PHPUNIT_FLAGS="-v"
     - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
 php:
-  - 8.0
+  - 8.1
   - nightly
 
 matrix:
