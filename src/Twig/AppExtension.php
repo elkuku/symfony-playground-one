@@ -12,20 +12,25 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('role_name', [$this, 'getRoleName']),
+            new TwigFilter('role_names', [$this, 'getRoleNames']),
         ];
     }
 
-    public function getRoleName($value): string
+    /**
+     * @param array<string> $values
+     */
+    public function getRoleNames(array $values): string
     {
-        if (is_array($value)) {
-            $roles = [];
-            foreach ($value as $item) {
-                $roles[] = array_search($item, User::ROLES, true);
-            }
-
-            return implode(', ', $roles);
+        $roles = [];
+        foreach ($values as $value) {
+            $roles[] = $this->getRoleName($value);
         }
 
-        return array_search($value, User::ROLES, true);
+        return implode(', ', $roles);
+    }
+
+    public function getRoleName(string $value): string
+    {
+        return array_search($value, User::ROLES, true) ?: '';
     }
 }
