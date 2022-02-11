@@ -33,7 +33,7 @@ class UserRepository extends ServiceEntityRepository
     public function findUsers(): array
     {
         return $this->findBy(
-            ['role' => User::ROLES['User']],
+            ['role' => User::ROLES['user']],
             ['id' => 'ASC']
         );
     }
