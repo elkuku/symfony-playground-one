@@ -4481,27 +4481,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"leaflet-fullscreen@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "leaflet-fullscreen@npm:1.0.2"
-  checksum: d6f472c18a08dc0bbb3a4e39f5688ad5f997bcc69a14212fe59acb31f31adec03cca63cc9a081e3e68cb73d4f43c0e2aa61d31aba4acf28e0b0977b03e44255c
-  languageName: node
-  linkType: hard
-
-"leaflet.locatecontrol@npm:^0.76.0":
-  version: 0.76.0
-  resolution: "leaflet.locatecontrol@npm:0.76.0"
-  checksum: a271d563e90795d475bd1dbfb4f7a366f29730434699ed915ce4f5e0503c3bd5316f4f5a3e2aced22cd88c67ec83e0ab1c70b3590c7425eb957f9c2a7063414c
-  languageName: node
-  linkType: hard
-
-"leaflet@npm:^1.6.0":
-  version: 1.7.1
-  resolution: "leaflet@npm:1.7.1"
-  checksum: 7a841174dc3c8e135a2ba9a81cdd8145ef4c00e516eb558281ea47b20499f94ddab58a76a72ee15104e0dce88a07ae91fe933cfab75b569c5ed0770497aa7d99
-  languageName: node
-  linkType: hard
-
 "lines-and-columns@npm:^1.1.6":
   version: 1.1.6
   resolution: "lines-and-columns@npm:1.1.6"
@@ -6192,9 +6171,6 @@ fsevents@~2.3.2:
     file-loader: ^6.2.0
     hotkeys-js: ^3.8.7
     jquery: ^3.6.0
-    leaflet: ^1.6.0
-    leaflet-fullscreen: ^1.0.2
-    leaflet.locatecontrol: ^0.76.0
     open-iconic: ^1.1.1
     regenerator-runtime: ^0.13.9
     webpack-notifier: ^1.15.0

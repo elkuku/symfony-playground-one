@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Maxfield;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -54,7 +53,6 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud('Maxfields', 'fa fa-users', Maxfield::class);
         yield MenuItem::linkToCrud('Users', 'fa fa-users', User::class);
 
         yield MenuItem::section();

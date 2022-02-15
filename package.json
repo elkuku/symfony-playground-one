@@ -11,8 +11,6 @@
         "file-loader": "^6.2.0",
         "hotkeys-js": "^3.8.7",
         "jquery": "^3.6.0",
-        "leaflet": "^1.6.0",
-        "leaflet-fullscreen": "^1.0.2",
         "open-iconic": "^1.1.1",
         "regenerator-runtime": "^0.13.9",
         "webpack-notifier": "^1.15.0"
@@ -24,8 +22,5 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
-    },
-    "dependencies": {
-        "leaflet.locatecontrol": "^0.76.0"
     }
 }
