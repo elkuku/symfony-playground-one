@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\AbstractLazyCollection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -30,7 +35,7 @@ class User implements UserInterface
 
     #[Column(type: Types::STRING, length: 255, unique: true)]
     #[Assert\NotBlank]
-    private ?string $identifier = '';
+    private string $identifier = '';
 
     #[Column(type: Types::JSON)]
     private array $roles = [];
@@ -40,6 +45,14 @@ class User implements UserInterface
 
     #[Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $gitHubId = '';
+
+    #[OneToMany(mappedBy: 'owner', targetEntity: Maxfield::class)]
+    private Collection $maxfields;
+
+    public function __construct()
+    {
+        $this->maxfields = new ArrayCollection();
+    }
 
     public function __serialize(): array
     {
@@ -53,6 +66,11 @@ class User implements UserInterface
     {
         $this->id = $data['id'];
         $this->identifier = $data['identifier'];
+    }
+
+    public function __toString()
+    {
+        return $this->identifier;
     }
 
     public function eraseCredentials(): void
@@ -123,6 +141,36 @@ class User implements UserInterface
     public function setGitHubId(?string $gitHubId): self
     {
         $this->gitHubId = $gitHubId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Maxfield[]
+     */
+    public function getMaxfields(): Collection
+    {
+        return $this->maxfields;
+    }
+
+    public function addMaxfield(Maxfield $maxfield): self
+    {
+        if (!$this->maxfields->contains($maxfield)) {
+            $this->maxfields[] = $maxfield;
+            $maxfield->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaxfield(Maxfield $maxfield): self
+    {
+        if ($this->maxfields->removeElement($maxfield)) {
+            // set the owning side to null (unless already changed)
+            if ($maxfield->getOwner() === $this) {
+                $maxfield->setOwner(null);
+            }
+        }
 
         return $this;
     }
