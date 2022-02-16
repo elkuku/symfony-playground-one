@@ -3,7 +3,7 @@
 [![Build Status](https://www.travis-ci.com/elkuku/symfony-playground-one.svg?branch=master)](https://www.travis-ci.com/elkuku/symfony-playground-one)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elkuku/symfony-playground-one/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elkuku/symfony-playground-one/?branch=master)
 
-![screen-playground-one](https://user-images.githubusercontent.com/33978/122070193-5d21b280-cdbb-11eb-803d-f9e76c728d7a.png)
+![screen](https://user-images.githubusercontent.com/33978/154263165-67bbd7e0-7778-443b-8e85-3184f759fddb.png)
 
 ## What's this??
 An opinionated [Symfony](https://symfony.com) project template including:
