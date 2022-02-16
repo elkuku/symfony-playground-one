@@ -10,6 +10,7 @@ use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
 use Rector\Php80\ValueObject\AnnotationToAttribute;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
 use RectorPrefix20220117\Symplify\SymfonyPhpConfig\ValueObjectInliner;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -29,17 +30,19 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     //                          ]]);
 
     // $containerConfigurator->import(DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES);
-
+    //
     // $containerConfigurator->import(SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES);
     // $containerConfigurator->import(SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION);
     // $containerConfigurator->import(SymfonySetList::SYMFONY_CODE_QUALITY);
     // $containerConfigurator->import(SymfonySetList::SYMFONY_STRICT);
     // $containerConfigurator->import(SymfonySetList::SYMFONY_60);
-
+    //
     // $containerConfigurator->import(NetteSetList::ANNOTATIONS_TO_ATTRIBUTES);
 
     // $containerConfigurator->import(SetList::EARLY_RETURN);
     $containerConfigurator->import(LevelSetList::UP_TO_PHP_81);
+    $containerConfigurator->import(SymfonyLevelSetList::UP_TO_SYMFONY_60);
+
 
 
     return;
