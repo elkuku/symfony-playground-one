@@ -10,6 +10,7 @@ use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -109,13 +110,18 @@ class GoogleAuthenticator extends AbstractAuthenticator
 
     public function onAuthenticationFailure(
         Request $request,
-        AuthenticationException $exception
+        AuthenticationException $exception,
     ): RedirectResponse {
         $message = strtr(
             $exception->getMessageKey(),
             $exception->getMessageData()
         );
-        $request->getSession()->getFlashBag()->add('danger', $message);
+
+        /**
+         * @var Session $session
+         */
+        $session = $request->getSession();
+        $session->getFlashBag()->add('danger', $message);
 
         return new RedirectResponse($this->urlGenerator->generate('login'));
     }
