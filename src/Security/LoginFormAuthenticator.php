@@ -42,15 +42,18 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         $credentials = $this->getCredentials($request);
 
         return new SelfValidatingPassport(
-            new UserBadge($credentials['identifier'] ?? ''),
+            new UserBadge((string)$credentials['identifier']),
             [
-                new CsrfTokenBadge('login', $credentials['csrf_token'] ?? ''),
+                new CsrfTokenBadge('login', (string)$credentials['csrf_token'] ),
                 new RememberMeBadge(),
             ]
         );
     }
 
-    #[ArrayShape(['identifier' => "string", 'csrf_token' => "string"])]
+    /**
+     * @return array{identifier: bool|float|int|string|null, csrf_token: bool|float|int|string|null}
+     */
+    #[ArrayShape(['identifier' => "mixed", 'csrf_token' => "mixed"])]
     private function getCredentials(
         Request $request
     ): array {

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+use JetBrains\PhpStorm\ArrayShape;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -30,8 +31,11 @@ class User implements UserInterface
 
     #[Column(type: Types::STRING, length: 255, unique: true)]
     #[Assert\NotBlank]
-    private ?string $identifier = '';
+    private string $identifier = '';
 
+    /**
+     * @var array<string>
+     */
     #[Column(type: Types::JSON)]
     private array $roles = [];
 
@@ -39,8 +43,12 @@ class User implements UserInterface
     private ?string $googleId = '';
 
     #[Column(type: Types::INTEGER, nullable: true)]
-    private ?int $gitHubId;
+    private ?int $gitHubId = 0;
 
+    /**
+     * @return array{ id: integer|null, identifier: string|null}
+     */
+    #[ArrayShape(['id' => "int|null", 'identifier' => "null|string"])]
     public function __serialize(): array
     {
         return [
@@ -49,10 +57,17 @@ class User implements UserInterface
         ];
     }
 
+    /**
+     * @param array{ id: int|null, identifier: string|null} $data
+     */
     public function __unserialize(array $data): void
     {
+        if (false === isset($data['id'])) {
+            return;
+        }
+
         $this->id = $data['id'];
-        $this->identifier = $data['identifier'];
+        $this->identifier = (string)$data['identifier'];
     }
 
     public function eraseCredentials(): void
@@ -69,6 +84,9 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array<string> $roles
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -91,7 +109,7 @@ class User implements UserInterface
         return $this->identifier;
     }
 
-    public function setIdentifier(?string $identifier): self
+    public function setIdentifier(string $identifier): self
     {
         $this->identifier = $identifier;
 

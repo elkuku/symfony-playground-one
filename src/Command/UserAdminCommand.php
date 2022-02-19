@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -101,7 +102,12 @@ class UserAdminCommand extends Command
         ))
             ->setErrorMessage('Choice %s is invalid.');
 
-        return $this->getHelper('question')->ask(
+        /**
+         * @var QuestionHelper $questionHelper
+         */
+        $questionHelper = $this->getHelper('question');
+
+        return (string)$questionHelper->ask(
             $this->input,
             $this->output,
             $question
@@ -111,8 +117,8 @@ class UserAdminCommand extends Command
     private function createUser(): void
     {
         $user = (new User())
-            ->setIdentifier($this->askIdentifier())
-            ->setRoles([$this->askRole()]);
+            ->setIdentifier((string)$this->askIdentifier())
+            ->setRoles([(string)$this->askRole()]);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
@@ -121,8 +127,14 @@ class UserAdminCommand extends Command
     private function askIdentifier(): string
     {
         $io = new SymfonyStyle($this->input, $this->output);
+
+        /**
+         * @var QuestionHelper $questionHelper
+         */
+        $questionHelper = $this->getHelper('question');
+
         do {
-            $identifier = $this->getHelper('question')->ask(
+            $identifier = $questionHelper->ask(
                 $this->input,
                 $this->output,
                 new Question('Identifier: ')
@@ -132,12 +144,17 @@ class UserAdminCommand extends Command
             }
         } while ($identifier === null);
 
-        return $identifier;
+        return (string)$identifier;
     }
 
     private function askRole(): mixed
     {
-        return $this->getHelper('question')->ask(
+        /**
+         * @var QuestionHelper $questionHelper
+         */
+        $questionHelper = $this->getHelper('question');
+
+      return $questionHelper->ask(
             $this->input,
             $this->output,
             (new ChoiceQuestion(
@@ -182,7 +199,11 @@ class UserAdminCommand extends Command
 
     private function deleteUser(): void
     {
-        $id = $this->getHelper('question')->ask(
+        /**
+         * @var QuestionHelper $questionHelper
+         */
+        $questionHelper = $this->getHelper('question');
+        $id = $questionHelper->ask(
             $this->input,
             $this->output,
             new Question('User ID to delete: ')
