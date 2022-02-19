@@ -38,8 +38,8 @@ class User implements UserInterface
     #[Column(type: Types::STRING, length: 100, nullable: true)]
     private ?string $googleId = '';
 
-    #[Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $gitHubId = '';
+    #[Column(type: Types::INTEGER, nullable: true)]
+    private ?int $gitHubId;
 
     public function __serialize(): array
     {
@@ -115,12 +115,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getGitHubId(): ?string
+    public function getGitHubId(): ?int
     {
         return $this->gitHubId;
     }
 
-    public function setGitHubId(?string $gitHubId): self
+    public function setGitHubId(?int $gitHubId): self
     {
         $this->gitHubId = $gitHubId;
 

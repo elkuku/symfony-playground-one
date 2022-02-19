@@ -5,6 +5,8 @@ namespace App\Tests\Controller;
 use App\Repository\UserRepository;
 use DirectoryIterator;
 use Exception;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -22,20 +24,14 @@ class ControllerAdminAccessTest extends WebTestCase
             'login'                    => [
                 'statusCodes' => ['GET' => 200],
             ],
-            'user_index'               => [
+            'admin'               => [
                 'statusCodes' => ['GET' => 200],
             ],
-            'user_new'                 => [
-                'statusCodes' => ['GET' => 200, 'POST' => 200],
+            'connect_google_check' => [
+                'statusCodes' => ['GET' => 500],
             ],
-            'user_show'                => [
-                'statusCodes' => ['GET' => 200],
-            ],
-            'user_edit'                => [
-                'statusCodes' => ['GET' => 200, 'POST' => 200],
-            ],
-            'connect_google_api_token' => [
-                'statusCodes' => ['GET' => 200],
+            'connect_github_check' => [
+                'statusCodes' => ['GET' => 500],
             ],
         ];
 
@@ -52,28 +48,26 @@ class ControllerAdminAccessTest extends WebTestCase
         $routeLoader = static::getContainer()
             ->get('routing.loader');
 
-        foreach (
-            new DirectoryIterator(__DIR__.'/../../src/Controller') as $item
-        ) {
-            if (
-                $item->isDot()
-                || $item->isDir()
-                || in_array(
-                    $item->getBasename(),
-                    ['.gitignore', 'GoogleController.php']
-                )
-            ) {
-                continue;
+        $directory = __DIR__.'/../../src/Controller';
+
+        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+
+        $it->rewind();
+        while($it->valid()) {
+            if (!$it->isDot() && $it->getSubPathName() !== '.gitignore') {
+
+                $sub = $it->getSubPath() ? $it->getSubPath().'\\' : '';
+
+                $routerClass = 'App\Controller\\'.$sub.basename(
+                        $it->key(),
+                        '.php'
+                    );
+                $routes = $routeLoader->load($routerClass)->all();
+
+                $this->processRoutes($routes, $client, $user);
             }
 
-
-            $routerClass = 'App\Controller\\'.basename(
-                    $item->getBasename(),
-                    '.php'
-                );
-            $routes = $routeLoader->load($routerClass)->all();
-
-            $this->processRoutes($routes, $client, $user);
+            $it->next();
         }
     }
 
@@ -106,24 +100,9 @@ class ControllerAdminAccessTest extends WebTestCase
                 if (array_key_exists($method, $expectedStatusCodes)) {
                     $expectedStatusCode = $expectedStatusCodes[$method];
                 }
-                if ($out) {
-                    echo sprintf(
-                        'Testing: %s - %s Expected: %s ... ',
-                        $method,
-                        $path,
-                        $expectedStatusCode,
-                    );
-                }
 
                 $browser->loginUser($user);
                 $browser->request($method, $path);
-
-                if ($out) {
-                    echo sprintf(
-                            ' got: %s',
-                            $browser->getResponse()->getStatusCode()
-                        ).PHP_EOL;
-                }
 
                 self::assertEquals(
                     $expectedStatusCode,

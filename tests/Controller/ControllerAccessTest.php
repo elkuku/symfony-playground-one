@@ -4,6 +4,8 @@ namespace App\Tests\Controller;
 
 use DirectoryIterator;
 use Exception;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -20,8 +22,11 @@ class ControllerAccessTest extends WebTestCase
             'login'                    => [
                 'statusCodes' => ['GET' => 200],
             ],
-            'connect_google_api_token' => [
-                'statusCodes' => ['GET' => 200],
+            'connect_google_check' => [
+                'statusCodes' => ['GET' => 500],
+            ],
+            'connect_github_check' => [
+                'statusCodes' => ['GET' => 500],
             ],
         ];
 
@@ -34,27 +39,26 @@ class ControllerAccessTest extends WebTestCase
         $routeLoader = static::bootKernel()->getContainer()
             ->get('routing.loader');
 
-        foreach (
-            new DirectoryIterator(__DIR__.'/../../src/Controller') as $item
-        ) {
-            if (
-                $item->isDot()
-                || $item->isDir()
-                || in_array(
-                    $item->getBasename(),
-                    ['.gitignore', 'GoogleController.php']
-                )
-            ) {
-                continue;
-            }
+        $directory = __DIR__.'/../../src/Controller';
 
-            $routerClass = 'App\Controller\\'.basename(
-                    $item->getBasename(),
+        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+
+        $it->rewind();
+        while($it->valid()) {
+            if (!$it->isDot() && !in_array($it->getSubPathName(), ['.gitignore', 'foo'])) {
+
+                $sub = $it->getSubPath() ? $it->getSubPath().'\\' : '';
+
+            $routerClass = 'App\Controller\\'.$sub.basename(
+                    $it->key(),
                     '.php'
                 );
             $routes = $routeLoader->load($routerClass)->all();
 
             $this->processRoutes($routes, $client);
+            }
+
+            $it->next();
         }
     }
 
@@ -82,30 +86,14 @@ class ControllerAccessTest extends WebTestCase
                 $methods = ['GET'];
             }
 
-            $path = str_replace('{id}', $defaultId, $route->getPath());
-            $out = false;
+            $path = str_replace('{id}', (string)$defaultId, $route->getPath());
             foreach ($methods as $method) {
                 $expectedStatusCode = 302;
                 if (array_key_exists($method, $expectedStatusCodes)) {
                     $expectedStatusCode = $expectedStatusCodes[$method];
                 }
-                if ($out) {
-                    echo sprintf(
-                        'Testing: %s - %s Expected: %s ... ',
-                        $method,
-                        $path,
-                        $expectedStatusCode,
-                    );
-                }
 
                 $browser->request($method, $path);
-
-                if ($out) {
-                    echo sprintf(
-                            ' got: %s',
-                            $browser->getResponse()->getStatusCode()
-                        ).PHP_EOL;
-                }
 
                 self::assertEquals(
                     $expectedStatusCode,
