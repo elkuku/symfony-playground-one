@@ -7,6 +7,7 @@ use Exception;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -45,9 +46,19 @@ class ControllerAdminAccessTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = static::getContainer()->get(UserRepository::class)
-            ->findOneByIdentifier('admin');
+        /**
+         * @var UserRepository $userRepository
+         */
+        $userRepository = static::getContainer()->get(UserRepository::class);
 
+        /**
+         * @var \Symfony\Component\Security\Core\User\UserInterface $user
+         */
+        $user = $userRepository->findOneBy(['identifier' => 'admin']);
+
+        /**
+         * @var DelegatingLoader $routeLoader
+         */
         $routeLoader = static::getContainer()
             ->get('routing.loader');
 

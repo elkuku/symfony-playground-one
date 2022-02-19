@@ -16,9 +16,15 @@ class UserAccessTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h2', 'Hello DefaultController!');
 
+        /**
+         * @var UserRepository $userRepository
+         */
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $user = $userRepository->findOneByIdentifier('user');
+        /**
+         * @var \Symfony\Component\Security\Core\User\UserInterface $user
+         */
+        $user = $userRepository->findOneBy(['identifier' => 'user']);
 
         $client->loginUser($user);
 
