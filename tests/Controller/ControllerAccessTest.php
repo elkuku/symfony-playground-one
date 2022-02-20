@@ -20,10 +20,10 @@ class ControllerAccessTest extends WebTestCase
      */
     private array $exceptions
         = [
-            'default'                  => [
+            'default' => [
                 'statusCodes' => ['GET' => 200],
             ],
-            'login'                    => [
+            'login' => [
                 'statusCodes' => ['GET' => 200],
             ],
             'connect_google_check' => [
@@ -49,21 +49,31 @@ class ControllerAccessTest extends WebTestCase
 
         $directory = __DIR__.'/../../src/Controller';
 
-        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+        $it = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($directory)
+        );
 
         $it->rewind();
-        while($it->valid()) {
-            if (!$it->isDot() && !in_array($it->getSubPathName(), ['.gitignore', 'foo'])) {
-
+        while ($it->valid()) {
+            if (!$it->isDot()
+                && !in_array(
+                    $it->getSubPathName(),
+                    [
+                        '.gitignore',
+                        'GoogleController.php',
+                        'GitHubController.php',
+                    ]
+                )
+            ) {
                 $sub = $it->getSubPath() ? $it->getSubPath().'\\' : '';
 
-            $routerClass = 'App\Controller\\'.$sub.basename(
-                    $it->key(),
-                    '.php'
-                );
-            $routes = $routeLoader->load($routerClass)->all();
+                $routerClass = 'App\Controller\\'.$sub.basename(
+                        $it->key(),
+                        '.php'
+                    );
+                $routes = $routeLoader->load($routerClass)->all();
 
-            $this->processRoutes($routes, $client);
+                $this->processRoutes($routes, $client);
             }
 
             $it->next();

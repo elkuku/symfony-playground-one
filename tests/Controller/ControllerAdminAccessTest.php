@@ -22,13 +22,13 @@ class ControllerAdminAccessTest extends WebTestCase
      */
     private array $exceptions
         = [
-            'default'                  => [
+            'default' => [
                 'statusCodes' => ['GET' => 200],
             ],
-            'login'                    => [
+            'login' => [
                 'statusCodes' => ['GET' => 200],
             ],
-            'admin'               => [
+            'admin' => [
                 'statusCodes' => ['GET' => 200, 'POST' => 200],
             ],
             'connect_google_check' => [
@@ -64,12 +64,22 @@ class ControllerAdminAccessTest extends WebTestCase
 
         $directory = __DIR__.'/../../src/Controller';
 
-        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+        $it = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($directory)
+        );
 
         $it->rewind();
-        while($it->valid()) {
-            if (!$it->isDot() && $it->getSubPathName() !== '.gitignore') {
-
+        while ($it->valid()) {
+            if (!$it->isDot()
+                && !in_array(
+                    $it->getSubPathName(),
+                    [
+                        '.gitignore',
+                        'GoogleController.php',
+                        'GitHubController.php',
+                    ]
+                )
+            ) {
                 $sub = $it->getSubPath() ? $it->getSubPath().'\\' : '';
 
                 $routerClass = 'App\Controller\\'.$sub.basename(
@@ -88,8 +98,11 @@ class ControllerAdminAccessTest extends WebTestCase
     /**
      * @param array<Route> $routes
      */
-    private function processRoutes(array $routes, KernelBrowser $browser, UserInterface $user): void
-    {
+    private function processRoutes(
+        array $routes,
+        KernelBrowser $browser,
+        UserInterface $user
+    ): void {
         foreach ($routes as $routeName => $route) {
             $defaultId = 1;
             $expectedStatusCodes = [];
