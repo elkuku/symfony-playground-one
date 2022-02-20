@@ -37,6 +37,9 @@ class ControllerAdminAccessTest extends WebTestCase
             'connect_github_check' => [
                 'statusCodes' => ['GET' => 500],
             ],
+            'connect_github_start' => [
+                'statusCodes' => ['GET' => 500],
+            ],
         ];
 
     /**
@@ -75,8 +78,8 @@ class ControllerAdminAccessTest extends WebTestCase
                     $it->getSubPathName(),
                     [
                         '.gitignore',
-                        'GoogleController.php',
-                        'GitHubController.php',
+                        // 'GoogleController.php',
+                        // 'GitHubController.php',
                     ]
                 )
             ) {

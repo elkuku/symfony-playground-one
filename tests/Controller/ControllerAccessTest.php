@@ -32,6 +32,9 @@ class ControllerAccessTest extends WebTestCase
             'connect_github_check' => [
                 'statusCodes' => ['GET' => 500],
             ],
+            'connect_github_start' => [
+                'statusCodes' => ['GET' => 500],
+            ],
         ];
 
     /**
