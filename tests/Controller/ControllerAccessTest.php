@@ -60,8 +60,8 @@ class ControllerAccessTest extends WebTestCase
                     $it->getSubPathName(),
                     [
                         '.gitignore',
-                        'GoogleController.php',
-                        'GitHubController.php',
+                        'Security/GoogleController.php',
+                        'Security/GitHubController.php',
                     ]
                 )
             ) {
