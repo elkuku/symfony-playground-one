@@ -11,8 +11,8 @@ class AppExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('role_name', [$this, 'getRoleName']),
-            new TwigFilter('role_names', [$this, 'getRoleNames']),
+            new TwigFilter('role_name', [$this->getRoleName(...)]),
+            new TwigFilter('role_names', [$this->getRoleNames(...)]),
         ];
     }
 
