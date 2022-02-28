@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b705f33283ac9175562e58bb7e7a39a",
+    "content-hash": "f53c8875bf6c4f0bb7120ce59ce0bdb1",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1438,16 +1438,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v4.0.6",
+            "version": "v4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "1c8b03accb7255d15f05adca19072e062002bd82"
+                "reference": "3bfe7b5fb17228df27f318c58315bf46aef53e04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/1c8b03accb7255d15f05adca19072e062002bd82",
-                "reference": "1c8b03accb7255d15f05adca19072e062002bd82",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/3bfe7b5fb17228df27f318c58315bf46aef53e04",
+                "reference": "3bfe7b5fb17228df27f318c58315bf46aef53e04",
                 "shasum": ""
             },
             "require": {
@@ -1514,7 +1514,7 @@
             ],
             "support": {
                 "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.0.6"
+                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.0.7"
             },
             "funding": [
                 {
@@ -1522,7 +1522,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-15T19:25:19+00:00"
+            "time": "2022-02-27T17:31:10+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -8840,6 +8840,54 @@
             "time": "2021-10-28T05:46:28+00:00"
         },
         {
+            "name": "elkuku/symfony-utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elkuku/symfony-utils.git",
+                "reference": "bf5236467f1c20b438893fbe4cc5df67aa0d3be9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elkuku/symfony-utils/zipball/bf5236467f1c20b438893fbe4cc5df67aa0d3be9",
+                "reference": "bf5236467f1c20b438893fbe4cc5df67aa0d3be9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/browser-kit": "^6.0",
+                "symfony/framework-bundle": "^6.0",
+                "symfony/security-core": "^6.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Elkuku\\SymfonyUtils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "WTFPL"
+            ],
+            "authors": [
+                {
+                    "name": "Nikolai Plath",
+                    "email": "der.el.kuku@gmail.com"
+                }
+            ],
+            "description": "Various Symfony Utilities",
+            "support": {
+                "issues": "https://github.com/elkuku/symfony-utils/issues",
+                "source": "https://github.com/elkuku/symfony-utils/tree/master"
+            },
+            "time": "2022-02-28T01:04:42+00:00"
+        },
+        {
             "name": "jetbrains/phpstorm-attributes",
             "version": "1.0",
             "source": {
@@ -11726,6 +11774,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "elkuku/symfony-utils": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
