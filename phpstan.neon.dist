@@ -1,8 +1,8 @@
 parameters:
-	level: 9
+	level: max
 	paths:
 		- src
 		- tests
-	editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+#	editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
 includes:
 	- phpstan-baseline.neon
