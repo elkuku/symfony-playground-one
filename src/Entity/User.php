@@ -62,12 +62,8 @@ class User implements UserInterface
      */
     public function __unserialize(array $data): void
     {
-        if (false === isset($data['id'])) {
-            return;
-        }
-
-        $this->id = $data['id'];
-        $this->identifier = (string)$data['identifier'];
+        $this->id = $data['id'] ?? null;
+        $this->identifier = (string)($data['identifier'] ?? null);
     }
 
     public function eraseCredentials(): void
