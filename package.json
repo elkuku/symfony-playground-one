@@ -1,4 +1,8 @@
 {
+"engines": {
+        "node": "17.x",
+        "yarn": "2.x"
+    },
     "devDependencies": {
         "@hotwired/stimulus": "^3.0.1",
         "@popperjs/core": "^2.11.2",
