@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}{{ parent() }} - DefaultController{% endblock %}
 
 {% block body %}
     <h2>{{ 'system.welcome.message'|trans({'controller_name':controller_name}) }}</h2>
@@ -10,7 +10,7 @@
         </div>
     {% else %}
         <h4>
-            Use <code>symfony console user-admin</code> to create a user and <a href="{{ path('login') }}">log in</a>!
+            Use the <code>symfony console user-admin</code> command to create a user and <a href="{{ path('login') }}">log in</a>!
         </h4>
     {% endif %}
 
@@ -38,8 +38,8 @@
             <img src="{{ asset('build/images/wtfpl-logo-220x1601.png') }}" alt="WTFPL licensed">
         </a>
 
-
         <h3>Profanity is offensive!</h3>
+
         <p>
             You know what? Fuck your stance on profanity. Fuck your priorities in life. The WTFPL is about fucking
             freedom and we mean it. Freedom means freedom to copy and modify and share works of art and science with the

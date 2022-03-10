@@ -112,6 +112,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @todo this method is required by the the rememberMe functionality :(
+     */
     public function getPassword(): ?string
     {
         return null;
