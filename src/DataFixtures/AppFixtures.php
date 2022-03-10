@@ -13,7 +13,6 @@ class AppFixtures extends Fixture
         $manager->persist(
             (new User())
                 ->setIdentifier('user')
-                // ->setRoles(User::ROLES['user'])
         );
 
         $manager->persist(
