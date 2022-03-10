@@ -8844,12 +8844,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elkuku/symfony-utils.git",
-                "reference": "5de4efc262e7cdc5326aa494eeeb7403121450b6"
+                "reference": "1ce97949fdff22b4625510db0b3a500a1f32797d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elkuku/symfony-utils/zipball/5de4efc262e7cdc5326aa494eeeb7403121450b6",
-                "reference": "5de4efc262e7cdc5326aa494eeeb7403121450b6",
+                "url": "https://api.github.com/repos/elkuku/symfony-utils/zipball/1ce97949fdff22b4625510db0b3a500a1f32797d",
+                "reference": "1ce97949fdff22b4625510db0b3a500a1f32797d",
                 "shasum": ""
             },
             "require": {
@@ -8887,7 +8887,7 @@
                 "issues": "https://github.com/elkuku/symfony-utils/issues",
                 "source": "https://github.com/elkuku/symfony-utils/tree/master"
             },
-            "time": "2022-03-10T14:49:39+00:00"
+            "time": "2022-03-10T14:55:46+00:00"
         },
         {
             "name": "jetbrains/phpstorm-attributes",
