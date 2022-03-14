@@ -18,7 +18,7 @@ class DashboardController extends AbstractDashboardController
     }
 
     #[Route('/admin', name: 'admin', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted(User::ROLES['admin'])]
     public function index(): Response
     {
         $users = $this->userRepository->findAll();

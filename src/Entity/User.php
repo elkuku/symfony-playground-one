@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
-use JetBrains\PhpStorm\ArrayShape;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -46,9 +45,11 @@ class User implements UserInterface
     private ?int $gitHubId = 0;
 
     /**
-     * @return array{ id: integer|null, identifier: string|null}
+     * @return array{
+     *     id: integer|null,
+     *     identifier: string|null
+     * }
      */
-    #[ArrayShape(['id' => "int|null", 'identifier' => "null|string"])]
     public function __serialize(): array
     {
         return [
@@ -58,7 +59,10 @@ class User implements UserInterface
     }
 
     /**
-     * @param array{ id: int|null, identifier: string|null} $data
+     * @param array{
+     *     id: int|null,
+     *     identifier: string|null
+     * } $data
      */
     public function __unserialize(array $data): void
     {
@@ -75,7 +79,7 @@ class User implements UserInterface
         $roles = $this->roles;
 
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = self::ROLES['user'];
 
         return array_unique($roles);
     }
