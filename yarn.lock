@@ -1226,9 +1226,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@symfony/webpack-encore@npm:^1.8.1":
-  version: 1.8.1
-  resolution: "@symfony/webpack-encore@npm:1.8.1"
+"@symfony/webpack-encore@npm:^1.8.2":
+  version: 1.8.2
+  resolution: "@symfony/webpack-encore@npm:1.8.2"
   dependencies:
     "@babel/core": ^7.7.0
     "@babel/plugin-syntax-dynamic-import": ^7.0.0
@@ -1257,7 +1257,7 @@ __metadata:
     yargs-parser: ^20.2.4
   bin:
     encore: bin/encore.js
-  checksum: 86493220f5a27dd8bdfff048fde7c2398d9f89dbcf8dfa2bb7362f9c2ec41774efcbcf1e6c09ebce1aada74a07c7f9b06b590da185b7fe1f66102a674dd7f0a3
+  checksum: a18ed3cae48a27942b5c905bcc4601eb179ebbaf86c2c82c976117631c4860fc2b82f38820864778c8210200f8db6a42b6ad7f3455d8e3a604517ffb25d9cbc7
   languageName: node
   linkType: hard
 
@@ -6163,7 +6163,7 @@ fsevents@~2.3.2:
     "@hotwired/stimulus": ^3.0.1
     "@popperjs/core": ^2.11.4
     "@symfony/stimulus-bridge": ^3.0.0
-    "@symfony/webpack-encore": ^1.8.1
+    "@symfony/webpack-encore": ^1.8.2
     bootstrap: ^5.1.3
     bootstrap-icons: ^1.8.1
     bootswatch: ^5.1.3
