@@ -36,3 +36,6 @@ yarn-error.log
 ###< phpunit/phpunit ###
 
 phpstan.neon
+
+/tools/php-cs-fixer/vendor
+/.php-cs-fixer.cache
