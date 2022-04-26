@@ -25,7 +25,7 @@ class UserCrudController extends AbstractCrudController
                 ->hideOnForm()
                 ->setSortable(false)
                 ->setLabel('Social')
-                ->formatValue(static function($value, ?User $user) {
+                ->formatValue(static function ($value, ?User $user) {
                     if (!$user) {
                         return false;
                     }
@@ -37,7 +37,7 @@ class UserCrudController extends AbstractCrudController
                         );
                     }
 
-                    if($user->getGitHubId()) {
+                    if ($user->getGitHubId()) {
                         return sprintf(
                             '<i class="fa fa-users" title="GitHub ID: %s"></i>',
                             $user->getGitHubId()

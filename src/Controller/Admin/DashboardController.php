@@ -22,9 +22,9 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         $users = $this->userRepository->findAll();
+
         return $this->render('admin/index.html.twig', [
             'userCount' => count($users),
-
         ]);
         // return parent::index();
 

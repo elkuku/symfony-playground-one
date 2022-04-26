@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class GitHubController extends AbstractController
 {
     /**
-     * Link to this controller to start the "connect" process
+     * Link to this controller to start the "connect" process.
      */
     #[Route(path: '/connect/github', name: 'connect_github_start', methods: ['GET'])]
     public function connectAction(
@@ -20,7 +20,7 @@ class GitHubController extends AbstractController
             ->getClient('github')
             ->redirect(
                 [
-                    'user:email' // the scopes you want to access
+                    'user:email', // the scopes you want to access
                 ],
                 []
             );
@@ -29,7 +29,7 @@ class GitHubController extends AbstractController
     /**
      * After going to GitHub, you're redirected back here
      * because this is the "redirect_route" you configured
-     * in config/packages/knpu_oauth2_client.yaml
+     * in config/packages/knpu_oauth2_client.yaml.
      */
     #[Route(path: '/connect/check/github', name: 'connect_github_check', methods: ['GET'])]
     public function connectCheckAction(): RedirectResponse
