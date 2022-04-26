@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Core\Configuration\Option;
-use Rector\Doctrine\Set\DoctrineSetList;
+use Rector\Config\RectorConfig;
 use Rector\Nette\Set\NetteSetList;
 use Rector\Php74\Rector\Property\TypedPropertyRector;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
@@ -12,11 +12,24 @@ use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
-use RectorPrefix20220117\Symplify\SymfonyPhpConfig\ValueObjectInliner;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
+return static function (RectorConfig $rectorConfig): void {
+
+    $parameters = $rectorConfig->parameters();
+    $parameters->set(
+        Option::SYMFONY_CONTAINER_XML_PATH_PARAMETER,
+        __DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml'
+    );
+
+    $rectorConfig->sets([
+        SymfonyLevelSetList::UP_TO_SYMFONY_54,
+        SymfonySetList::SYMFONY_CODE_QUALITY,
+        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
+    ]);
+
+    return;
 
     // $services = $containerConfigurator->services();
     // $services->set(AnnotationToAttributeRector::class)
