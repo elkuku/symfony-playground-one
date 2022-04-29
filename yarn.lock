@@ -1212,9 +1212,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@symfony/stimulus-bridge@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@symfony/stimulus-bridge@npm:3.0.0"
+"@symfony/stimulus-bridge@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@symfony/stimulus-bridge@npm:3.1.0"
   dependencies:
     "@hotwired/stimulus-webpack-helpers": ^1.0.1
     acorn: ^8.0.5
@@ -1222,7 +1222,7 @@ __metadata:
     schema-utils: ^3.0.0
   peerDependencies:
     "@hotwired/stimulus": ^3.0
-  checksum: 7faa13757c08accc2b931b2dce5979d4c3e8b328b98fd4a2bdcd53f32ae6d69646f8268336814451b889eff190959e37200ebdb09433a3a3330deca71286d508
+  checksum: 2d399e557b7c5f73d390a7a3113a937d4f37ef483503b300fd3844f28de4ba2b3d245dcf75258e60552c7254882840058c319a3ec74f669d0e5fab1dffa8bed1
   languageName: node
   linkType: hard
 
@@ -2516,10 +2516,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.22.0":
-  version: 3.22.0
-  resolution: "core-js@npm:3.22.0"
-  checksum: 6724d3cbe49adce4261236a7abdbdd180d287f9582f4128318af34efeae0e972aa582a3032ba19ed4e4c0dfaf91ef9d1eaca72a68fa9a7792c9b6b571bc27de2
+"core-js@npm:^3.22.3":
+  version: 3.22.3
+  resolution: "core-js@npm:3.22.3"
+  checksum: 59d54cca3014c30779b8c071e8a0a7462816671229642df67873dcc57f797a5426bfbd9cad5ae0cf0bdfbac3a1296c7bfbde44f2528d7cc977ccc3ccda9c10c3
   languageName: node
   linkType: hard
 
@@ -3817,10 +3817,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"hotkeys-js@npm:^3.8.9":
-  version: 3.8.9
-  resolution: "hotkeys-js@npm:3.8.9"
-  checksum: b2512178c8c2a0638b856cfad4da538b0ade093391cc461c75e8915246c7db9e7eff655e7d629052417fa8c476be5189ce2e62d1754b1999d24f71ced7c88fea
+"hotkeys-js@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "hotkeys-js@npm:3.9.0"
+  checksum: d7e47de164eaffb61728aa89cb4fe96882eadd4261aad731b05cfbe76aee3d131db0922721a3f67bcaa881962064b482dd2fc29061e2600bca6262e03d9bb04d
   languageName: node
   linkType: hard
 
@@ -6162,14 +6162,14 @@ fsevents@~2.3.2:
   dependencies:
     "@hotwired/stimulus": ^3.0.1
     "@popperjs/core": ^2.11.5
-    "@symfony/stimulus-bridge": ^3.0.0
+    "@symfony/stimulus-bridge": ^3.1.0
     "@symfony/webpack-encore": ^1.8.2
     bootstrap: ^5.1.3
     bootstrap-icons: ^1.8.1
     bootswatch: ^5.1.3
-    core-js: ^3.22.0
+    core-js: ^3.22.3
     file-loader: ^6.2.0
-    hotkeys-js: ^3.8.9
+    hotkeys-js: ^3.9.0
     jquery: ^3.6.0
     open-iconic: ^1.1.1
     regenerator-runtime: ^0.13.9
