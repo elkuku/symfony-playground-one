@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[Entity(repositoryClass: UserRepository::class)]
 #[Table(name: 'system_user')]
@@ -24,13 +24,11 @@ class User implements UserInterface
             'admin' => 'ROLE_ADMIN',
         ];
 
-    #[Id, GeneratedValue(strategy: 'AUTO')]
-    #[Column(type: Types::INTEGER)]
+    #[Column, Id, GeneratedValue]
     private ?int $id = 0;
 
-    #[Column(type: Types::STRING, length: 255, unique: true)]
-    #[Assert\NotBlank]
-    private string $identifier = '';
+    #[Column(unique: true), NotBlank]
+    private string $identifier = '*';
 
     /**
      * @var array<string>
@@ -38,11 +36,11 @@ class User implements UserInterface
     #[Column(type: Types::JSON)]
     private array $roles = [];
 
-    #[Column(type: Types::STRING, length: 100, nullable: true)]
-    private ?string $googleId = '';
+    #[Column(length: 100, nullable: true)]
+    private ?string $googleId = null;
 
-    #[Column(type: Types::INTEGER, nullable: true)]
-    private ?int $gitHubId = 0;
+    #[Column(nullable: true)]
+    private ?int $gitHubId = null;
 
     /**
      * @return array{
