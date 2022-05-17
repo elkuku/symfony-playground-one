@@ -16,11 +16,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (RectorConfig $rectorConfig): void {
-
-    $parameters = $rectorConfig->parameters();
-    $parameters->set(
-        Option::SYMFONY_CONTAINER_XML_PATH_PARAMETER,
-        __DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml'
+    $rectorConfig->symfonyContainerXml(
+        __DIR__.'/var/cache/dev/App_KernelDevDebugContainer.xml'
     );
 
     $rectorConfig->sets([
@@ -56,14 +53,12 @@ return static function (RectorConfig $rectorConfig): void {
     $containerConfigurator->import(LevelSetList::UP_TO_PHP_81);
     $containerConfigurator->import(SymfonyLevelSetList::UP_TO_SYMFONY_60);
 
-
-
     return;
 
     // get parameters
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::PATHS, [
-        __DIR__ . '/src'
+        __DIR__.'/src',
     ]);
 
     // Define what rule sets will be applied
