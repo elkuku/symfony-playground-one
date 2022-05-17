@@ -2414,10 +2414,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:^1.8.1":
-  version: 1.8.1
-  resolution: "bootstrap-icons@npm:1.8.1"
-  checksum: 99844d84abb720e8f98c746ef97498f5a80591ff0be3c641ab4aef61aec6c4c5c0192d619af59028263e58b08f884186c381a92475dd1be8fb8d545f59c119f2
+"bootstrap-icons@npm:^1.8.2":
+  version: 1.8.2
+  resolution: "bootstrap-icons@npm:1.8.2"
+  checksum: 05beee521432f00341c672cf5cf97e926ed62d8f5b7eb77ed63b7cf7013c47561c0e5c58694dcd606cf1ea016c5d3a1831d22b61479ad47b2b0422cef2152f45
   languageName: node
   linkType: hard
 
@@ -5907,7 +5907,7 @@ fsevents@~2.3.2:
     "@symfony/stimulus-bridge": ^3.1.0
     "@symfony/webpack-encore": ^2.1.0
     bootstrap: ^5.1.3
-    bootstrap-icons: ^1.8.1
+    bootstrap-icons: ^1.8.2
     bootswatch: ^5.1.3
     core-js: ^3.22.5
     file-loader: ^6.2.0
