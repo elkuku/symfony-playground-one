@@ -2833,10 +2833,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.22.5":
-  version: 3.22.5
-  resolution: "core-js@npm:3.22.5"
-  checksum: 582d2039d83f4a426b5885eac69223ac9b4a24648c987d12205aabeff3f64c65b373e6fde4eedbb3e8c815d97231d94f77964b241a352b8c5cba0877301f4b50
+"core-js@npm:^3.22.7":
+  version: 3.22.7
+  resolution: "core-js@npm:3.22.7"
+  checksum: a2b92a00f8a053e24f661abdf5ee9649d26658fd563ba8b91a6d2530beaa5be2bd6bdb0a55c7f5eb0db16ab759d16bd37b1ed7dd33aa645a205089ab58d63226
   languageName: node
   linkType: hard
 
@@ -3871,10 +3871,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"hotkeys-js@npm:^3.9.3":
-  version: 3.9.3
-  resolution: "hotkeys-js@npm:3.9.3"
-  checksum: 6d6222f4e9b4a8f414846bd4b003625157e2d2fdfefd90b7f2eddd645af56f78f6cbd4c7c37683a03cedad39b82bdfc042939666f4d46354c31a4559c29a88e3
+"hotkeys-js@npm:^3.9.4":
+  version: 3.9.4
+  resolution: "hotkeys-js@npm:3.9.4"
+  checksum: 02cb42c2291c848fa5fec624a37e61ce9508b16926234f421cf4818a42fc4f59d0df68752e79940cbd6dc4617879d9f7b9e04e328da6840f1ad88ed0d594faa2
   languageName: node
   linkType: hard
 
@@ -5909,9 +5909,9 @@ fsevents@~2.3.2:
     bootstrap: ^5.1.3
     bootstrap-icons: ^1.8.2
     bootswatch: ^5.1.3
-    core-js: ^3.22.5
+    core-js: ^3.22.7
     file-loader: ^6.2.0
-    hotkeys-js: ^3.9.3
+    hotkeys-js: ^3.9.4
     jquery: ^3.6.0
     open-iconic: ^1.1.1
     regenerator-runtime: ^0.13.9
