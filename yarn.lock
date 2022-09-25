@@ -31,7 +31,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.19.1, @babel/core@npm:^7.17.0":
+"@babel/core@npm:7.19.1, @babel/core@npm:^7.19.1":
   version: 7.19.1
   resolution: "@babel/core@npm:7.19.1"
   dependencies:
@@ -1105,7 +1105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:^7.16.0":
+"@babel/preset-env@npm:^7.19.1":
   version: 7.19.1
   resolution: "@babel/preset-env@npm:7.19.1"
   dependencies:
@@ -1270,7 +1270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/stimulus@npm:^3.0.0":
+"@hotwired/stimulus@npm:^3.1.0":
   version: 3.1.0
   resolution: "@hotwired/stimulus@npm:3.1.0"
   checksum: e7bda6b3f466c1e3eb1ebf7b83483c333943c9cc2ffd673c62d5f9ddced9662581919fd70700787e750513152448c43b4600f39011482986ca1e901b65013d35
@@ -1367,7 +1367,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@symfony/stimulus-bridge@npm:^3.2.0":
+"@symfony/stimulus-bridge@npm:^3.2.1":
   version: 3.2.1
   resolution: "@symfony/stimulus-bridge@npm:3.2.1"
   dependencies:
@@ -2799,7 +2799,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.23.0":
+"core-js@npm:^3.25.2":
   version: 3.25.2
   resolution: "core-js@npm:3.25.2"
   checksum: e8ee17b8c38f5f108a9b6005eefe14bea3f7485dce1df38c129accf275d423a2acb9d410119d77d59ee9ac8eb97751d0e3b9ed7c00e7736e2e231528d258545d
@@ -5879,16 +5879,16 @@ fsevents@~2.3.2:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@babel/core": ^7.17.0
-    "@babel/preset-env": ^7.16.0
-    "@hotwired/stimulus": ^3.0.0
+    "@babel/core": ^7.19.1
+    "@babel/preset-env": ^7.19.1
+    "@hotwired/stimulus": ^3.1.0
     "@popperjs/core": ^2.11.6
-    "@symfony/stimulus-bridge": ^3.2.0
+    "@symfony/stimulus-bridge": ^3.2.1
     "@symfony/webpack-encore": ^4.0.0
     bootstrap: ^5.2.1
     bootstrap-icons: ^1.9.1
     bootswatch: ^5.2.1
-    core-js: ^3.23.0
+    core-js: ^3.25.2
     file-loader: ^6.2.0
     hotkeys-js: ^3.10.0
     jquery: ^3.6.1
