@@ -2455,10 +2455,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootswatch@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "bootswatch@npm:5.2.1"
-  checksum: 7962d1cde6a6d0a1c0f8ad4b663a9455191abd8de2ebf530f0a4b03d9f1f4d696c92dcab47b8739cbde99629c6bc8537412577fc4f4f8383103e58d117d2a180
+"bootswatch@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "bootswatch@npm:5.2.2"
+  checksum: 906b9a54e46026a8ddc354fda0f31200b8e283833a148e693e747e9c776d8114996d8cfacff9825ede53c197cfa2b4a0b60abdab09a338e7f097419e7803273f
   languageName: node
   linkType: hard
 
@@ -5758,7 +5758,14 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"regenerator-runtime@npm:^0.13.4, regenerator-runtime@npm:^0.13.9":
+"regenerator-runtime@npm:^0.13.10":
+  version: 0.13.10
+  resolution: "regenerator-runtime@npm:0.13.10"
+  checksum: 86a60d6c9baed5892682d53d066803eefe672e4c7c713e30c7441b86e06610dc8a3325b9d5dd2f18fa43bcae4bccc81681fccd6a5a82f6e9a9b2e4b694bb6229
+  languageName: node
+  linkType: hard
+
+"regenerator-runtime@npm:^0.13.4":
   version: 0.13.9
   resolution: "regenerator-runtime@npm:0.13.9"
   checksum: 8587f99ed63493b9ce34375f426b8ec61bf380681a374d5f2460c14ae2c289114702bed1f565a2499e809f2ba6d8ecd25a8dfee54bc224171f20a95a249be242
@@ -5964,13 +5971,13 @@ fsevents@~2.3.2:
     "@symfony/webpack-encore": ^4.0.0
     bootstrap: ^5.2.2
     bootstrap-icons: ^1.9.1
-    bootswatch: ^5.2.1
+    bootswatch: ^5.2.2
     core-js: ^3.25.5
     file-loader: ^6.2.0
     hotkeys-js: ^3.10.0
     jquery: ^3.6.1
     open-iconic: ^1.1.1
-    regenerator-runtime: ^0.13.9
+    regenerator-runtime: ^0.13.10
     webpack: ^5.74.0
     webpack-cli: ^4.10.0
     webpack-notifier: ^1.15.0
