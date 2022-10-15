@@ -13,7 +13,6 @@ An opinionated [Symfony](https://symfony.com) project template including:
 * `dev` login form <br/> `prod` Social login with Google or GitHub (and [more](https://github.com/knpuniversity/oauth2-client-bundle#step-1-download-the-client-library))
 * JQuery, Bootstrap and [Bootswatch](https://bootswatch.com/)
 * [EasyAdmin](https://github.com/EasyCorp/EasyAdminBundle)
-* Prepared for [Heroku](https://www.heroku.com/)
 * Likes PHP 8 ;)
 
 ## Installation
