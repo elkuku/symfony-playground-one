@@ -37,11 +37,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         return new SelfValidatingPassport(
-            new UserBadge((string)$request->request->get('identifier')),
+            new UserBadge((string) $request->request->get('identifier')),
             [
                 new CsrfTokenBadge(
                     'login',
-                    (string)$request->request->get('_csrf_token')
+                    (string) $request->request->get('_csrf_token')
                 ),
                 new RememberMeBadge(),
             ]
