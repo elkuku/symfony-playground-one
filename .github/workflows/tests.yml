@@ -3,6 +3,17 @@ on: [push]
 jobs:
     php-unit-and-functional-tests:
         runs-on: ubuntu-20.04
+        # Docs: https://docs.github.com/en/actions/using-containerized-services
+        services:
+            postgres:
+                image: postgres:latest
+                env:
+                    POSTGRES_USER: postgres
+                    POSTGRES_PASSWORD: postgres
+                    POSTGRES_DB: postgres
+                ports:
+                    - 5432/tcp
+                options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
         strategy:
             fail-fast: true
             matrix:
@@ -50,7 +61,8 @@ jobs:
 #                  args: --config=.php_cs.dist --diff --dry-run
             ## —— Tests ———————————————————————————————————————————————————————————
             - name: Run functionnal and unit tests
-              run: php bin/phpunit
+              run: make tests
+#                php bin/phpunit
 #                  cp .env.ci .env.test
 #                  cp .env.ci .env
 #                  cp phpunit.ci.xml phpunit.xml
