@@ -50,8 +50,8 @@ jobs:
 #                  args: --config=.php_cs.dist --diff --dry-run
             ## —— Tests ———————————————————————————————————————————————————————————
             - name: Run functionnal and unit tests
-              run: |
+              run: php bin/phpunit
 #                  cp .env.ci .env.test
 #                  cp .env.ci .env
 #                  cp phpunit.ci.xml phpunit.xml
-                  php bin/phpunit
+#                  php bin/phpunit
