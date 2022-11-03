@@ -17,7 +17,7 @@ jobs:
         strategy:
             fail-fast: true
             matrix:
-                php-versions: [8.1']
+                php-versions: ['8.1']
         steps:
             # —— Setup Github actions —————————————————————————————————————————————
             # https://github.com/actions/checkout (official)
@@ -62,6 +62,9 @@ jobs:
             ## —— Tests ———————————————————————————————————————————————————————————
             - name: Run functionnal and unit tests
               run: make citests
+              env:
+                  DATABASE_URL: postgres://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports[5432] }}/postgres?charset=UTF-8
+
 #                php bin/phpunit
 #                  cp .env.ci .env.test
 #                  cp .env.ci .env
