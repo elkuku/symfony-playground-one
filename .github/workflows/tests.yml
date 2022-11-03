@@ -19,7 +19,7 @@ jobs:
             matrix:
                 php-versions: ['8.1']
         steps:
-            # —— Setup Github actions —————————————————————————————————————————————
+            # —— Setup GitHub actions —————————————————————————————————————————————
             # https://github.com/actions/checkout (official)
             - name: Git checkout placeholder-service
               uses: actions/checkout@v2
@@ -68,12 +68,12 @@ jobs:
 #                    restore-keys: |
 #                    ${{ runner.os }}-yarn-cache-node-modules-
 
-            -   name: Yarn install
+            - name: Yarn install
 #                if: steps.yarn-cache-node-modules.outputs.cache-hit != 'true'
-                run: yarn install
+              run: yarn install
 
-            -   name: Yarn build
-                run: yarn run encore production
+            - name: Yarn build
+              run: yarn run encore production
             ## —— Tests ———————————————————————————————————————————————————————————
             - name: Run functionnal and unit tests
               run: make citests

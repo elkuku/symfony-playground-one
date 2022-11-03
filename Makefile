@@ -18,4 +18,4 @@ citests:
 	bin/console doctrine:fixtures:load -n
 	bin/phpunit --testdox
 	vendor/bin/phpstan
-	tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run
+	#tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run
