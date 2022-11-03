@@ -12,8 +12,8 @@ tests:
 .PHONY: tests
 citests: export APP_ENV=test
 citests:
-	#symfony console doctrine:database:drop --force || true
-	#symfony console doctrine:database:create
+	bin/console doctrine:database:drop --force || true
+	bin/console doctrine:database:create
 	bin/console doctrine:migrations:migrate -n
 	bin/console doctrine:fixtures:load -n
 	bin/phpunit --testdox $@
