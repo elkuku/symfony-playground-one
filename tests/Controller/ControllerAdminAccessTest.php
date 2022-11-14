@@ -32,6 +32,7 @@ class ControllerAdminAccessTest extends ControllerBaseTest
         '.gitignore',
         'Security/GoogleController.php',
         'Security/GitHubController.php',
+        'Security/GitLabController.php',
     ];
 
     public function testRoutes(): void

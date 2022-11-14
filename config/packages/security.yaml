@@ -21,6 +21,7 @@ security:
                 - App\Security\LoginFormAuthenticator
                 - App\Security\GoogleAuthenticator
                 - App\Security\GitHubAuthenticator
+                - App\Security\GitLabAuthenticator
 
             form_login:
                 login_path: login

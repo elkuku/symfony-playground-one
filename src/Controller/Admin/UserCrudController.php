@@ -44,6 +44,13 @@ class UserCrudController extends AbstractCrudController
                         );
                     }
 
+                    if ($user->getGitLabId()) {
+                        return sprintf(
+                            '<i class="fa fa-users" title="GitLab ID: %s"></i>',
+                            $user->getGitLabId()
+                        );
+                    }
+
                     return false;
                 }),
             ChoiceField::new('roles')

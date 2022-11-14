@@ -42,6 +42,9 @@ class User implements UserInterface
     #[Column(nullable: true)]
     private ?int $gitHubId = null;
 
+    #[Column(nullable: true)]
+    private ?int $gitLabId = null;
+
     /**
      * @return array{
      *     id: integer|null,
@@ -142,6 +145,18 @@ class User implements UserInterface
     public function setGitHubId(?int $gitHubId): self
     {
         $this->gitHubId = $gitHubId;
+
+        return $this;
+    }
+
+    public function getGitLabId(): ?int
+    {
+        return $this->gitLabId;
+    }
+
+    public function setGitLabId(?int $gitLabId): self
+    {
+        $this->gitLabId = $gitLabId;
 
         return $this;
     }
