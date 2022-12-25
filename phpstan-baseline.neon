@@ -2,6 +2,10 @@ parameters:
 	ignoreErrors:
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
-			count: 2
+			count: 1
 			path: src/Security/GoogleAuthenticator.php
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 1
+			path: src/Security/GoogleIdentityAuthenticator.php
 
