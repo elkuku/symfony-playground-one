@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,8 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends BaseController
 {
     #[Route('/', name: 'default', methods: ['GET'])]
-    public function index(string $projectDir, string $appEnv): Response
-    {
+    public function index(
+        #[Autowire('%kernel.project_dir%')] string $projectDir,
+        #[Autowire('%env(APP_ENV)%')] string $appEnv,
+    ): Response {
         return $this->render(
             'default/index.html.twig',
             [

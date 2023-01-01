@@ -7,6 +7,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Google\Client;
 use League\OAuth2\Client\Provider\GoogleUser;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -25,7 +26,7 @@ class GoogleIdentityAuthenticator extends AbstractAuthenticator
     use TargetPathTrait;
 
     public function __construct(
-        private readonly string $oauthGoogleId,
+        #[Autowire('%env(OAUTH_GOOGLE_ID)%')] private readonly string $oauthGoogleId,
         private readonly UserRepository $userRepository,
         private readonly EntityManagerInterface $entityManager,
         private readonly UrlGeneratorInterface $urlGenerator,
