@@ -169,6 +169,9 @@
       <path value="$PROJECT_DIR$/vendor/google/auth" />
       <path value="$PROJECT_DIR$/vendor/google/apiclient" />
       <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/vendor/tomasvotruba/cognitive-complexity" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
