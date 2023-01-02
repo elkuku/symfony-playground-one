@@ -3,6 +3,9 @@ parameters:
 	paths:
 		- src
 		- tests
+	cognitive_complexity:
+		class: 50
+		function: 8
 #	editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
 includes:
 	- phpstan-baseline.neon
