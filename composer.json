@@ -55,6 +55,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "jetbrains/phpstorm-attributes": "^1.0",
+        "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan": "^1.4",
         "phpunit/phpunit": "^9.5",
         "rector/rector": "^0.15",
@@ -66,7 +67,8 @@
         "symfony/phpunit-bridge": "6.*",
         "symfony/stopwatch": "6.*",
         "symfony/var-dumper": "6.*",
-        "symfony/web-profiler-bundle": "6.*"
+        "symfony/web-profiler-bundle": "6.*",
+        "tomasvotruba/cognitive-complexity": "^0.0.5"
     },
     "config": {
         "optimize-autoloader": true,
@@ -77,7 +79,8 @@
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "phpstan/extension-installer": true
         }
     },
     "autoload": {
