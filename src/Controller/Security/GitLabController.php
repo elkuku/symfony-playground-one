@@ -21,7 +21,8 @@ class GitLabController extends AbstractController
             ->redirect(
                 [
                     'profile',
-                    'read_user', 'openid', // the scopes you want to access
+                    'read_user',
+                    'openid', // the scopes you want to access
                 ],
                 []
             );

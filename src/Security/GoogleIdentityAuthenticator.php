@@ -40,7 +40,7 @@ class GoogleIdentityAuthenticator extends AbstractAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $idToken = (string)$request->request->get('credential');
+        $idToken = (string) $request->request->get('credential');
 
         if (!$idToken) {
             throw new AuthenticationException('Missing credentials :(');
@@ -107,8 +107,8 @@ class GoogleIdentityAuthenticator extends AbstractAuthenticator
 
         // Register a new user
         $user = (new User())
-            ->setIdentifier((string)$googleUser->getEmail())
-            ->setGoogleId((string)$googleUser->getId());
+            ->setIdentifier((string) $googleUser->getEmail())
+            ->setGoogleId((string) $googleUser->getId());
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
