@@ -27,7 +27,8 @@ class User implements UserInterface
     #[Column, Id, GeneratedValue]
     private ?int $id = 0;
 
-    #[Column(unique: true), NotBlank]
+    #[Column(unique: true)]
+    #[NotBlank(message: 'user.identifier.not_blank')]
     private string $identifier = '*';
 
     /**

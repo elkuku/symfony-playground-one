@@ -24,3 +24,5 @@ Actions: Actions
 'Yes, remove it!': 'Yes, remove it!'
 'No records found': 'No records found'
 Loading...: Loading...
+'Symfony is great': '__Symfony is great en'
+app.about.text: __app.about.text.en

@@ -24,3 +24,5 @@ Actions: Aktionen
 'No records found': 'Keine Einträge gefunden'
 Loading...: 'Wird geladen...'
 Cancel: Abbrechen
+'Symfony is great': '__Symfony is great de'
+app.about.text: __app.about.text.de

@@ -18,8 +18,16 @@
                         <a class="nav-link" href="{{ path('admin') }}">{{ 'Admin'|trans }}</a>
                     {% endif %}
                 {% endif %}
+                <a class="nav-link" href="{{ path('about') }}">About</a>
             </div>
             <div class="navbar-nav ms-auto">
+                <select name="" id="" onchange="window.location.href='/switch-locale/'+this.value">
+                    {% for locale in locales|split(',') %}
+                    <option value="{{ locale }}" {% if locale == app.request.locale %}selected="selected"{% endif %}>
+                        {{ locale }}
+                    </option>
+                    {% endfor %}
+                </select>
                 {% if app.user %}
                     <a class="nav-link" accesskey="l" href="{{ path('logout') }}" title="{{ 'Logout'|trans }}">
                         <i class="bi-box-arrow-up-right"></i>
