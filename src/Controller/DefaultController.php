@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class DefaultController extends BaseController
 {
@@ -24,5 +26,14 @@ class DefaultController extends BaseController
                 'app_env' => $appEnv,
             ]
         );
+    }
+
+    #[Route('/profile', name: 'app_profile', methods: ['GET'])]
+    #[IsGranted(User::ROLES['user'])]
+    public function profile(): Response
+    {
+        return $this->render('default/profile.html.twig', [
+            'user' => $this->getUser(),
+        ]);
     }
 }
