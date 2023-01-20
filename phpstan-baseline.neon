@@ -1,9 +1,15 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Parameter \\#1 \\$params of method App\\\\Entity\\\\User\\:\\:setParams\\(\\) expects array\\<string\\>, mixed given\\.$#"
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: src/Security/GoogleAuthenticator.php
+
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1

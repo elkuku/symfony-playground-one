@@ -5,7 +5,18 @@
 {% block body %}
     <h1>User Profile</h1>
 
-    Hello {{ app.user.userIdentifier }}
+    <p>Identifier: <code>{{ app.user.userIdentifier }}</code></p>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    <button type="submit" class="btn btn-lg btn-outline-success" title="Guardar">
+        <span class="bi-check"></span>
+    </button>
+
+    {{ form_end(form) }}
+
 {% endblock %}
 
 
