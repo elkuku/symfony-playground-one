@@ -9,8 +9,8 @@ use App\Service\LocaleProvider;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -21,7 +21,7 @@ class DefaultController extends BaseController
     #[Route('/', name: 'default', methods: ['GET'])]
     public function index(
         #[Autowire('%kernel.project_dir%')] string $projectDir,
-        #[Autowire('%env(APP_ENV)%')] string $appEnv,
+        TranslatorInterface $translator,
     ): Response {
         return $this->render(
             'default/index.html.twig',
@@ -30,7 +30,6 @@ class DefaultController extends BaseController
                 'php_version' => PHP_VERSION,
                 'symfony_version' => Kernel::VERSION,
                 'project_dir' => $projectDir,
-                'app_env' => $appEnv,
                 'translatedMessage' => $translator->trans('Symfony is great'),
             ]
         );
