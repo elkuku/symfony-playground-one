@@ -12,6 +12,6 @@ import './styles/app.css';
 import './bootstrap';
 
 import '@popperjs/core'
-// import 'bootstrap';
+import 'bootstrap/js/dist/dropdown';
 import 'bootswatch/dist/cosmo/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'

@@ -6,15 +6,22 @@
     <h2>{{ 'system.welcome.message'|trans({'controller_name':controller_name}) }}</h2>
     {% if app.user %}
         <div class="alert alert-success">
-            <h4>Welcome {{ app.user.userIdentifier }}!</h4>
+            <h4>Welcome {{ app.user.param('user_name') ?: app.user.userIdentifier }}!</h4>
+            {% if not app.user.param('user_name') %}
+                Please <a href="{{ path('app_profile') }}">update your Profile</a>!
+            {% endif %}
         </div>
     {% else %}
         <h4>
-            Use the <code>symfony console user-admin</code> command to create a user and <a href="{{ path('login') }}">log in</a>!
+            Use the <code>symfony console user-admin</code> command to create a user so you can
+            <a href="{{ path('login') }}">log in</a>!
         </h4>
     {% endif %}
 
-    <h4>We are using Symfony <code>{{ symfony_version }}</code> in <code>{{ app_env }}</code> mode on PHP <code>{{ php_version }}</code>.</h4>
+    <h4>
+        You are using Symfony <code>{{ symfony_version }}</code> in <code>{{ app.environment }}</code> mode on PHP
+        <code>{{ php_version }}</code>.
+    </h4>
 
     This friendly message is coming from:
     <ul>

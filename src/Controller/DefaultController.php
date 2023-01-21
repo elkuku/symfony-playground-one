@@ -2,21 +2,24 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserParamsType;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Service\LocaleProvider;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class DefaultController extends BaseController
 {
     #[Route('/', name: 'default', methods: ['GET'])]
     public function index(
-        TranslatorInterface $translator,
         #[Autowire('%kernel.project_dir%')] string $projectDir,
         #[Autowire('%env(APP_ENV)%')] string $appEnv,
     ): Response {
@@ -31,6 +34,29 @@ class DefaultController extends BaseController
                 'translatedMessage' => $translator->trans('Symfony is great'),
             ]
         );
+    }
+
+    #[Route('/profile', name: 'app_profile', methods: ['GET', 'POST'])]
+    #[IsGranted(User::ROLES['user'])]
+    public function profile(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(UserParamsType::class, $user->getParams());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setParams($form->getData());
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'User data have been saved.');
+
+            return $this->redirectToRoute('default');
+        }
+
+        return $this->render('default/profile.html.twig', [
+            'form' => $form,
+        ]);
     }
 
     #[Route(

@@ -23,6 +23,9 @@ class ControllerAdminAccessTest extends ControllerBaseTest
             'admin'   => [
                 'statusCodes' => ['GET' => 200, 'POST' => 200],
             ],
+            'app_profile' => [
+                'statusCodes' => ['GET' => 200, 'POST' => 200],
+            ],
         ];
 
     /**
