@@ -24,5 +24,6 @@ Actions: Acciones
 'No records found': 'No se encontraron entradas'
 Loading...: Cargando...
 Cancel: Cancelar
-'Symfony is great': '__Symfony is great es'
-app.about.text: __app.about.text.es
+'Symfony is great': '¡Symfony es chévere!'
+app.about.text: 'Sobre nuestra app...'
+About: Sobre

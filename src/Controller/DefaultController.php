@@ -5,9 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserParamsType;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Service\LocaleProvider;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -18,7 +16,17 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class DefaultController extends BaseController
 {
-    #[Route('/', name: 'default', methods: ['GET'])]
+    #[Route('/')]
+    public function indexNoLocale(SessionInterface $session): Response
+    {
+        $locale = $session->get('_locale');
+        if ($locale) {
+            dd($locale);
+        }
+        return $this->redirectToRoute('default', ['_locale' => 'en']);
+    }
+
+    #[Route('/{_locale<%app.supported_locales%>}/', name: 'default', methods: ['GET'])]
     public function index(
         #[Autowire('%kernel.project_dir%')] string $projectDir,
         TranslatorInterface $translator,
@@ -35,10 +43,12 @@ class DefaultController extends BaseController
         );
     }
 
-    #[Route('/profile', name: 'app_profile', methods: ['GET', 'POST'])]
+    #[Route('/{_locale<%app.supported_locales%>}/profile', name: 'app_profile', methods: ['GET', 'POST'])]
     #[IsGranted(User::ROLES['user'])]
-    public function profile(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    public function profile(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
         $user = $this->getUser();
         $form = $this->createForm(UserParamsType::class, $user->getParams());
         $form->handleRequest($request);
@@ -56,35 +66,5 @@ class DefaultController extends BaseController
         return $this->render('default/profile.html.twig', [
             'form' => $form,
         ]);
-    }
-
-    #[Route(
-        path: '/{_locale}/about',
-        name: 'about',
-        requirements: [
-            '_locale' => 'en|es|de',
-        ],
-    )]
-    public function about(): Response
-    {
-        return $this->render('default/about.html.twig');
-    }
-
-    #[Route('/switch-locale/{locale}', name: 'switch_locale', methods: ['GET'])]
-    public function switchLocale(
-        string $locale,
-        SessionInterface $session,
-        Request $request,
-        LocaleProvider $localeProvider,
-    ): RedirectResponse {
-        $locale = in_array($locale, $localeProvider->getLocales())
-            ? $locale
-            : $localeProvider->getDefaultLocale();
-        $session->set('_locale', $locale);
-        $request->setLocale($locale);
-
-        // This won't work if the referer already includes a locale parameter e.g. https://domain.tld/en/about
-        // return $this->redirect($request->headers->get('referer'));
-        return $this->redirectToRoute('default');
     }
 }
