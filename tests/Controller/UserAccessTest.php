@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserAccessTest extends WebTestCase
 {
-    public function testUserLogin(): void
+    public function testUserCanLogin(): void
     {
         $client = static::createClient();
 
