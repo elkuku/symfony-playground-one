@@ -33,6 +33,7 @@ class ControllerAdminAccessTest extends ControllerBaseTest
      */
     protected array $ignoredFiles = [
         '.gitignore',
+        'BaseController.php',
         'Security/GoogleController.php',
         'Security/GitHubController.php',
         'Security/GitLabController.php',
