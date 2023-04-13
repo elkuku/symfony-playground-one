@@ -2,22 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\UserParamsType;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[Route('/', name: 'default', methods: ['GET'])]
 class DefaultController extends BaseController
 {
-    #[Route('/', name: 'default', methods: ['GET'])]
-    public function index(
+    public function __invoke(
         #[Autowire('%kernel.project_dir%')] string $projectDir,
-    ): Response {
+    ): Response
+    {
         return $this->render(
             'default/index.html.twig',
             [
@@ -27,28 +23,5 @@ class DefaultController extends BaseController
                 'project_dir' => $projectDir,
             ]
         );
-    }
-
-    #[Route('/profile', name: 'app_profile', methods: ['GET', 'POST'])]
-    #[IsGranted(User::ROLES['user'])]
-    public function profile(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $user = $this->getUser();
-        $form = $this->createForm(UserParamsType::class, $user->getParams());
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setParams($form->getData());
-
-            $entityManager->flush();
-
-            $this->addFlash('success', 'User data have been saved.');
-
-            return $this->redirectToRoute('default');
-        }
-
-        return $this->render('default/profile.html.twig', [
-            'form' => $form,
-        ]);
     }
 }
