@@ -12,7 +12,7 @@
         "@symfony/webpack-encore": "^4.3.0",
         "bootstrap": "^5.3.0",
         "bootstrap-icons": "^1.10.5",
-        "bootswatch": "^5.2.3",
+        "bootswatch": "^5.3.0",
         "core-js": "^3.30.2",
         "file-loader": "^6.2.0",
         "hotkeys-js": "^3.10.2",

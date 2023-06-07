@@ -2796,10 +2796,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootswatch@npm:^5.2.3":
-  version: 5.2.3
-  resolution: "bootswatch@npm:5.2.3"
-  checksum: 334e178f5f7d014801dc7b30f70385a0b427dd625ed9a895fe9dae8db0fbd284a526cb9488914ad7627f97bde39806a663e3e011afe78511205a220b7cc73605
+"bootswatch@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "bootswatch@npm:5.3.0"
+  checksum: ceefe7d9682ae6babce6f150fa11b80aab865da18007ad0f871670a3849284396479f2e19be8360ab29e2dd00f5d9c80948b2bb29b5714366ec69aeae42128e0
   languageName: node
   linkType: hard
 
@@ -6321,7 +6321,7 @@ fsevents@~2.3.2:
     "@symfony/webpack-encore": ^4.3.0
     bootstrap: ^5.3.0
     bootstrap-icons: ^1.10.5
-    bootswatch: ^5.2.3
+    bootswatch: ^5.3.0
     core-js: ^3.30.2
     file-loader: ^6.2.0
     hotkeys-js: ^3.10.2
