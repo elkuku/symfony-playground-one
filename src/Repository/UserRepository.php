@@ -25,7 +25,7 @@ class UserRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         /**
-         * @var class-string<UserRepository>
+         * @var class-string<UserRepository> $className
          */
         $className = User::class;
         parent::__construct($registry, $className);
