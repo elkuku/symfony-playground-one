@@ -58,7 +58,7 @@
         "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan": "^1.4",
         "phpunit/phpunit": "^9.5",
-        "rector/rector": "^0.15",
+        "rector/rector": "^0.17",
         "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "6.*",
         "symfony/css-selector": "6.*",
@@ -68,7 +68,7 @@
         "symfony/stopwatch": "6.*",
         "symfony/var-dumper": "6.*",
         "symfony/web-profiler-bundle": "6.*",
-        "tomasvotruba/cognitive-complexity": "^0.0.5"
+        "tomasvotruba/cognitive-complexity": "^0.1"
     },
     "config": {
         "optimize-autoloader": true,
