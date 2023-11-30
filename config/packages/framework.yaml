@@ -3,7 +3,6 @@ framework:
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
     annotations: false
-    http_method_override: false
     trusted_proxies: '%env(TRUSTED_PROXIES)%'
     handle_all_throwables: true
 
