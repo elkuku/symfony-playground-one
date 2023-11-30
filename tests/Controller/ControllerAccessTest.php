@@ -33,7 +33,7 @@ class ControllerAccessTest extends ControllerBaseTest
             ],
         ];
 
-    public function testRoutes(): void
+    public function testAllRoutesAreProtected(): void
     {
         $this->runTests(static::createClient());
     }

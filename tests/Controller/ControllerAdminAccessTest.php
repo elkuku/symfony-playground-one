@@ -39,7 +39,7 @@ class ControllerAdminAccessTest extends ControllerBaseTest
         'Security/GitLabController.php',
     ];
 
-    public function testRoutes(): void
+    public function testAllRoutesAreProtected(): void
     {
         $client = static::createClient();
 
